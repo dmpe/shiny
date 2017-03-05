@@ -49,7 +49,7 @@ showReactLog <- function(time = TRUE) {
 }
 
 renderReactLog <- function(sessionToken = NULL, time = TRUE) {
-  templateFile <- system.file('www/reactive-graph.html', package='shiny')
+  templateFile <- system.file('www/reactive-graph.html', package='shinyV4')
   html <- paste(readLines(templateFile, warn=FALSE), collapse='\r\n')
   tc <- textConnection(NULL, 'w')
   on.exit(close(tc))

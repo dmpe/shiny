@@ -170,7 +170,7 @@ shinyAppDir_serverR <- function(appDir, options=list()) {
   }
 
   wwwDir <- file.path.ci(appDir, "www")
-  fallbackWWWDir <- system.file("www-dir", package = "shiny")
+  fallbackWWWDir <- system.file("www-dir", package = "shinyV4")
   serverSource <- cachedFuncWithFile(appDir, "server.R", case.sensitive = FALSE,
     function(serverR) {
       # If server.R contains a call to shinyServer (which sets .globals$server),
@@ -309,7 +309,7 @@ shinyAppDir_appR <- function(fileName, appDir, options=list())
   }
 
   wwwDir <- file.path.ci(appDir, "www")
-  fallbackWWWDir <- system.file("www-dir", package = "shiny")
+  fallbackWWWDir <- system.file("www-dir", package = "shinyV4")
 
   oldwd <- NULL
   monitorHandle <- NULL

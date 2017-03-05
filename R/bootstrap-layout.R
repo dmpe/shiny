@@ -11,8 +11,6 @@
 #' @param ... Elements to include within the page
 #' @param title The browser window title (defaults to the host URL of the page).
 #'   Can also be set as a side effect of the \code{\link{titlePanel}} function.
-#' @param responsive This option is deprecated; it is no longer optional with
-#'   Bootstrap 3.
 #' @param theme Alternative Bootstrap stylesheet (normally a css file within the
 #'   www directory). For example, to use the theme located at
 #'   \code{www/bootstrap.css} you would use \code{theme = "bootstrap.css"}.
@@ -86,10 +84,9 @@
 #' }
 #' @rdname fluidPage
 #' @export
-fluidPage <- function(..., title = NULL, responsive = NULL, theme = NULL) {
+fluidPage <- function(..., title = NULL, theme = NULL) {
   bootstrapPage(div(class = "container-fluid", ...),
                 title = title,
-                responsive = responsive,
                 theme = theme)
 }
 

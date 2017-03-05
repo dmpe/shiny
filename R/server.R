@@ -179,7 +179,7 @@ createAppHandlers <- function(httpHandlers, serverFuncSource) {
   appvars <- new.env()
   appvars$server <- NULL
 
-  sys.www.root <- system.file('www', package='shiny')
+  sys.www.root <- system.file('www', package='shinyV4')
 
   # This value, if non-NULL, must be present on all HTTP and WebSocket
   # requests as the Shiny-Shared-Secret header or else access will be
@@ -693,7 +693,7 @@ runApp <- function(appDir=getwd(),
     setShowcaseDefault(1)
   }
 
-  require(shiny)
+  require(shinyV4)
 
   # determine port if we need to
   if (is.null(port)) {
@@ -854,7 +854,7 @@ stopApp <- function(returnValue = invisible()) {
 #'   runExample("01_hello")
 #'
 #'   # Print the directory containing the code for all examples
-#'   system.file("examples", package="shiny")
+#'   system.file("examples", package="shinyV4")
 #' }
 #' @export
 runExample <- function(example=NA,
@@ -863,7 +863,7 @@ runExample <- function(example=NA,
                                                 interactive()),
                        host=getOption('shiny.host', '127.0.0.1'),
                        display.mode=c("auto", "normal", "showcase")) {
-  examplesDir <- system.file('examples', package='shiny')
+  examplesDir <- system.file('examples', package='shinyV4')
   dir <- resolve(examplesDir, example)
   if (is.null(dir)) {
     if (is.na(example)) {
@@ -895,7 +895,7 @@ runExample <- function(example=NA,
 #'   \code{\link[=shiny]{shinyApp}} et al, or, a UI object.
 #' @param server Ignored if \code{app} is a Shiny app object; otherwise, passed
 #'   along to \code{shinyApp} (i.e. \code{shinyApp(ui = app, server = server)}).
-#' @param port See \code{\link[=shiny]{runApp}}.
+#' @param port See \code{\link[=shinyV4]{runApp}}.
 #' @param viewer Specify where the gadget should be displayed--viewer pane,
 #'   dialog window, or external browser--by passing in a call to one of the
 #'   \code{\link{viewer}} functions.
@@ -907,7 +907,7 @@ runExample <- function(example=NA,
 #'
 #' @examples
 #' \dontrun{
-#' library(shiny)
+#' library(shinyV4)
 #'
 #' ui <- fillPage(...)
 #'
@@ -941,7 +941,7 @@ runGadget <- function(app, server = NULL, port = getOption("shiny.port"),
     viewer <- utils::browseURL
   }
 
-  shiny::runApp(app, port = port, launch.browser = viewer)
+  shinyV4::runApp(app, port = port, launch.browser = viewer)
 }
 
 # Add custom functionality to a Shiny app object's server func
