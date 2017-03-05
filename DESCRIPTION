@@ -8,7 +8,7 @@ Authors@R: c(
     person("JJ", "Allaire", role = "aut", email = "jj@rstudio.com"),
     person("Yihui", "Xie", role = "aut", email = "yihui@rstudio.com"),
     person("Jonathan", "McPherson", role = "aut", email = "jonathan@rstudio.com"),
-    person(family = "RStudio", role = "cph"),
+    person(family = "RStudio", role = "cph")
     )
 Description: Makes it incredibly easy to build interactive web
     applications with R. Automatic "reactive" binding between inputs and

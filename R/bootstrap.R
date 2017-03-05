@@ -54,10 +54,10 @@ bootstrapPage <- function(..., title = NULL, theme = NULL) {
 #' @inheritParams bootstrapPage
 #' @export
 bootstrapLib <- function(theme = NULL) {
-  htmlDependency("bootstrap", "4.0.0-alpha.6",
+  htmlDependency("bootstrap", "4.0.0",
     c(
       href = "shared/bootstrap",
-      file = system.file("www/shared/bootstrap", package = "shiny")
+      file = system.file("www/shared/bootstrap", package = "shinyV4")
     ),
     script = c(
       "js/bootstrap.min.js"

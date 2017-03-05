@@ -37,7 +37,7 @@ renderPage <- function(ui, connection, showcase=0, testMode=FALSE) {
 
     # Put the body into the default template
     ui <- htmlTemplate(
-      system.file("template", "default.html", package = "shiny"),
+      system.file("template", "default.html", package = "shinyV4"),
       body = ui
     )
   }
@@ -46,7 +46,7 @@ renderPage <- function(ui, connection, showcase=0, testMode=FALSE) {
     htmlDependency("json2", "2014.02.04", c(href="shared"), script = "json2-min.js"),
     htmlDependency("jquery", "1.12.4", c(href="shared"), script = "jquery.min.js"),
     htmlDependency("babel-polyfill", "6.7.2", c(href="shared"), script = "babel-polyfill.min.js"),
-    htmlDependency("shiny", utils::packageVersion("shiny"), c(href="shared"),
+    htmlDependency("shiny", utils::packageVersion("shinyV4"), c(href="shared"),
       script = if (getOption("shiny.minified", TRUE)) "shiny.min.js" else "shiny.js",
       stylesheet = "shiny.css")
   )
@@ -54,7 +54,7 @@ renderPage <- function(ui, connection, showcase=0, testMode=FALSE) {
   if (testMode) {
     # Add code injection listener if in test mode
     shiny_deps[[length(shiny_deps) + 1]] <-
-      htmlDependency("shiny-testmode", utils::packageVersion("shiny"),
+      htmlDependency("shiny-testmode", utils::packageVersion("shinyV4"),
         c(href="shared"), script = "shiny-testmode.js")
   }
 
