@@ -8,6 +8,14 @@ Shiny is a new package from RStudio that makes it incredibly easy to build inter
 
 For an introduction and examples, visit the [Shiny Dev Center](http://shiny.rstudio.com/).
 
+## Bootstrap 4 migration
+
+Backward compatibility is not preserved due to a complete rewrite of Bootstrap.
+The migration guide from v3 is here: [https://v4-alpha.getbootstrap.com/migration/](https://v4-alpha.getbootstrap.com/migration/)
+
+* Major: Dropped IE8, IE9, and iOS 6 support. v4 is now only IE10+ and iOS 7+. For sites needing either of those, use v3.
+* Major: Dropped the Glyphicons icon font. I decided to use font-awesome because it is already included in Shiny.
+
 ## Features
 
 * Build useful web applications with only a few lines of code&mdash;no JavaScript required.

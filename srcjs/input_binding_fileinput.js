@@ -1,3 +1,4 @@
+/*
 var IE8FileUploader = function(shinyapp, id, fileEl) {
   this.shinyapp = shinyapp;
   this.id = id;
@@ -37,7 +38,7 @@ var IE8FileUploader = function(shinyapp, id, fileEl) {
     this.form.submit();
   };
 }).call(IE8FileUploader.prototype);
-
+*/
 var FileUploader = function(shinyapp, id, files, el) {
   this.shinyapp = shinyapp;
   this.id = id;
@@ -204,7 +205,7 @@ function uploadFiles(evt) {
   var $fileText = $el.closest('div.input-group').find('input[type=text]');
   if (IE8) {
     // If we're using IE8/9, just use this placeholder
-    $fileText.val("[Uploaded file]");
+    // $fileText.val("[Uploaded file]");
   } else if (files.length === 1) {
     $fileText.val(files[0].name);
   } else {
@@ -214,7 +215,7 @@ function uploadFiles(evt) {
   // Start the new upload and put the uploader in 'currentUploader'.
   if (IE8) {
     /*jshint nonew:false */
-    new IE8FileUploader(exports.shinyapp, id, evt.target);
+    // new IE8FileUploader(exports.shinyapp, id, evt.target);
   } else {
     $el.data('currentUploader',
       new FileUploader(exports.shinyapp, id, files, evt.target));
