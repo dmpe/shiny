@@ -14,8 +14,6 @@ NULL
 #'
 #' @param ... The contents of the document body.
 #' @param title The browser window title (defaults to the host URL of the page)
-#' @param responsive This option is deprecated; it is no longer optional with
-#'   Bootstrap 3.
 #' @param theme Alternative Bootstrap stylesheet (normally a css file within the
 #'   www directory, e.g. \code{www/bootstrap.css})
 #'
@@ -26,11 +24,7 @@ NULL
 #'
 #' @seealso \code{\link{fluidPage}}, \code{\link{fixedPage}}
 #' @export
-bootstrapPage <- function(..., title = NULL, responsive = NULL, theme = NULL) {
-
-  if (!is.null(responsive)) {
-    shinyDeprecated("The 'responsive' argument is no longer used with Bootstrap 3.")
-  }
+bootstrapPage <- function(..., title = NULL, theme = NULL) {
 
   attachDependencies(
     tagList(
@@ -60,19 +54,16 @@ bootstrapPage <- function(..., title = NULL, responsive = NULL, theme = NULL) {
 #' @inheritParams bootstrapPage
 #' @export
 bootstrapLib <- function(theme = NULL) {
-  htmlDependency("bootstrap", "3.3.7",
+  htmlDependency("bootstrap", "4.0.0-alpha.6",
     c(
       href = "shared/bootstrap",
       file = system.file("www/shared/bootstrap", package = "shiny")
     ),
     script = c(
-      "js/bootstrap.min.js",
-      # These shims are necessary for IE 8 compatibility
-      "shim/html5shiv.min.js",
-      "shim/respond.min.js"
+      "js/bootstrap.min.js"
     ),
     stylesheet = if (is.null(theme)) "css/bootstrap.min.css",
-    meta = list(viewport = "width=device-width, initial-scale=1")
+    meta = list(viewport = "width=device-width, initial-scale=1, shrink-to-fit=no")
   )
 }
 
@@ -625,13 +616,7 @@ tabPanel <- function(title, ..., value = title, icon = NULL) {
 tabsetPanel <- function(...,
                         id = NULL,
                         selected = NULL,
-                        type = c("tabs", "pills"),
-                        position = NULL) {
-  if (!is.null(position)) {
-    shinyDeprecated(msg = paste("tabsetPanel: argument 'position' is deprecated;",
-                                "it has been discontinued in Bootstrap 3."),
-                    version = "0.10.2.2")
-  }
+                        type = c("tabs", "pills")) {
 
   if (!is.null(id))
     selected <- restoreInput(id = id, default = selected)
