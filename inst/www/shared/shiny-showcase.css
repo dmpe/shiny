@@ -1,7 +1,5 @@
 #showcase-well {
   border-radius: 0;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
 }
 
 .shiny-code {
@@ -41,7 +39,7 @@
   line-height: 1em;
 }
 
-#showcase-code-tabs .nav, 
+#showcase-code-tabs .nav,
 #showcase-code-tabs ul {
   margin-bottom: 0px;
 }
@@ -59,10 +57,6 @@
   border-color: #e5e5e5;
   border-width: 0px 1px 1px 1px;
   overflow:auto;
-  -webkit-border-bottom-right-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomright: 4px;
-  -moz-border-radius-bottomleft: 4px;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
 }

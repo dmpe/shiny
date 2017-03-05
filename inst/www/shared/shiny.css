@@ -98,9 +98,6 @@ pre.shiny-text-output.noplaceholder:empty {
 .recalculating {
   opacity: 0.3;
   transition: opacity 250ms ease 500ms;
-  -moz-transition: opacity 250ms ease 500ms;
-  -webkit-transition: opacity 250ms ease 500ms;
-  -o-transition: opacity 250ms ease 500ms;
 }
 
 .slider-animate-container {
@@ -127,9 +124,6 @@ pre.shiny-text-output.noplaceholder:empty {
   visibility: hidden;
 }
 .progress.shiny-file-input-progress .progress-bar.bar-danger {
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;
   transition: none;
 }
 /* Make sure the filename doesn't extend past the bounds of the container */
