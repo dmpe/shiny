@@ -1,4 +1,4 @@
-library(shiny)
+library(shinyV4)
 
 # Define server logic required to draw a histogram
 function(input, output) {
