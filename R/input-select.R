@@ -182,12 +182,9 @@ selectizeIt <- function(inputId, select, options, nonempty = FALSE) {
   res <- checkAsIs(options)
 
   selectizeDep <- htmlDependency(
-    "selectize", "0.11.2", c(href = "shared/selectize"),
+    "selectize", "0.12.4", c(href = "shared/selectize"),
     stylesheet = "css/selectize.bootstrap3.css",
     head = format(tagList(
-      HTML('<!--[if lt IE 9]>'),
-      tags$script(src = 'shared/selectize/js/es5-shim.min.js'),
-      HTML('<![endif]-->'),
       tags$script(src = 'shared/selectize/js/selectize.min.js')
     ))
   )
