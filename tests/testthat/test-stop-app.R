@@ -1,9 +1,9 @@
 context("stop-app")
 
 checkAndGetResults <- function(isError, isStopped) {
-  stopifnot(shiny:::.globals$reterror == isError)
-  stopifnot(shiny:::.globals$stopped, isStopped)
-  shiny:::.globals$retval
+  stopifnot(shinyV4:::.globals$reterror == isError)
+  stopifnot(shinyV4:::.globals$stopped, isStopped)
+  shinyV4:::.globals$retval
 }
 
 test_that("stopApp records errors and respects visibility", {

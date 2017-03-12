@@ -1,4 +1,4 @@
-library(shiny)
+library(shinyV4)
 
 badservercall <- function() {
   stop("server boom")

@@ -4,8 +4,7 @@
 \alias{tabsetPanel}
 \title{Create a tabset panel}
 \usage{
-tabsetPanel(..., id = NULL, selected = NULL, type = c("tabs", "pills"),
-  position = NULL)
+tabsetPanel(..., id = NULL, selected = NULL, type = c("tabs", "pills"))
 }
 \arguments{
 \item{...}{\code{\link{tabPanel}} elements to include in the tabset}
@@ -21,9 +20,6 @@ tab will be selected.}
 
 \item{type}{Use "tabs" for the standard look; Use "pills" for a more plain
 look where tabs are selected using a background fill color.}
-
-\item{position}{This argument is deprecated; it has been discontinued in
-Bootstrap 3.}
 }
 \value{
 A tabset that can be passed to \code{\link{mainPanel}}

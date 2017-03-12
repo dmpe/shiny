@@ -104,7 +104,7 @@ if (interactive()) {
     }
   )
 
-  shinyAppDir(system.file("examples/01_hello", package="shiny"))
+  shinyAppDir(system.file("examples/01_hello", package="shinyV4"))
 
 
   # The object can be passed to runApp()

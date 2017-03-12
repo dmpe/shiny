@@ -469,6 +469,7 @@ find_panel_info <- function(b) {
 
 # This is for ggplot2>2.2.1, after an API was introduced for extracting
 # information about the plot object.
+#' @importFrom ggplot2 summarise_layout summarise_coord summarise_layers
 find_panel_info_api <- function(b) {
   # Given a built ggplot object, return x and y domains (data space coords) for
   # each panel.

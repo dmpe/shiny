@@ -1,4 +1,4 @@
-library(shiny)
+library(shinyV4)
 app <- shinyApp(
   ui = fluidPage(
     "\u2264 and \u2265",

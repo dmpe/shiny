@@ -12,7 +12,7 @@ executeApp <- function(appPath) {
   result <- system2(
   	"R",
 	c("--slave", "-e",
-      shQuote(sprintf("shiny::runApp('%s', port = 8765)", appPath))
+      shQuote(sprintf("shinyV4::runApp('%s', port = 8765)", appPath))
 	),
     stdout = TRUE, stderr = TRUE
   )

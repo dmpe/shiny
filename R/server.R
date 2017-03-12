@@ -892,7 +892,7 @@ runExample <- function(example=NA,
 #' if running in RStudio, defaults to viewing the app in the Viewer pane.
 #'
 #' @param app Either a Shiny app object as created by
-#'   \code{\link[=shiny]{shinyApp}} et al, or, a UI object.
+#'   \code{\link[=shinyV4]{shinyApp}} et al, or, a UI object.
 #' @param server Ignored if \code{app} is a Shiny app object; otherwise, passed
 #'   along to \code{shinyApp} (i.e. \code{shinyApp(ui = app, server = server)}).
 #' @param port See \code{\link[=shinyV4]{runApp}}.

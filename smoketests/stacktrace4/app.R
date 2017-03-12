@@ -1,4 +1,4 @@
-library(shiny)
+library(shinyV4)
 
 badfunc <- function() {
   stop("boom")

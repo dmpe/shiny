@@ -165,7 +165,7 @@ fillPage <- function(..., padding = 0, title = NULL, bootstrap = TRUE,
 
 collapseSizes <- function(padding) {
   paste(
-    sapply(padding, shiny::validateCssUnit, USE.NAMES = FALSE),
+    sapply(padding, shinyV4::validateCssUnit, USE.NAMES = FALSE),
     collapse = " ")
 }
 
@@ -596,8 +596,6 @@ tabPanel <- function(title, ..., value = title, icon = NULL) {
 #'   tab will be selected.
 #' @param type Use "tabs" for the standard look; Use "pills" for a more plain
 #'   look where tabs are selected using a background fill color.
-#' @param position This argument is deprecated; it has been discontinued in
-#'   Bootstrap 3.
 #' @return A tabset that can be passed to \code{\link{mainPanel}}
 #'
 #' @seealso \code{\link{tabPanel}}, \code{\link{updateTabsetPanel}}

@@ -5,7 +5,7 @@
 \alias{fluidRow}
 \title{Create a page with fluid layout}
 \usage{
-fluidPage(..., title = NULL, responsive = NULL, theme = NULL)
+fluidPage(..., title = NULL, theme = NULL)
 
 fluidRow(...)
 }
@@ -14,9 +14,6 @@ fluidRow(...)
 
 \item{title}{The browser window title (defaults to the host URL of the page).
 Can also be set as a side effect of the \code{\link{titlePanel}} function.}
-
-\item{responsive}{This option is deprecated; it is no longer optional with
-Bootstrap 3.}
 
 \item{theme}{Alternative Bootstrap stylesheet (normally a css file within the
 www directory). For example, to use the theme located at

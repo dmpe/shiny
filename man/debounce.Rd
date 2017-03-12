@@ -84,7 +84,7 @@ window.
 if (interactive()) {
 options(device.ask.default = FALSE)
 
-library(shiny)
+library(shinyV4)
 library(magrittr)
 
 ui <- fluidPage(

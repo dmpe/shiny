@@ -417,7 +417,7 @@ makeFunction <- function(args = pairlist(), body, env = parent.frame()) {
 #' # This is something that toolkit authors will do
 #' renderTriple <- function(expr, env=parent.frame(), quoted=FALSE) {
 #'   # Convert expr to a function
-#'   func <- shiny::exprToFunction(expr, env, quoted)
+#'   func <- shinyV4::exprToFunction(expr, env, quoted)
 #'
 #'   function() {
 #'     value <- func()

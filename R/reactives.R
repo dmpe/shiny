@@ -999,7 +999,7 @@ registerDebugHook("observerFunc", environment(), label)
 #'
 #' # In a normal Shiny app, the web client will trigger flush events. If you
 #' # are at the console, you can force a flush with flushReact()
-#' shiny:::flushReact()
+#' shinyV4:::flushReact()
 #' @export
 observe <- function(x, env=parent.frame(), quoted=FALSE, label=NULL,
                     suspended=FALSE, priority=0,
@@ -1848,7 +1848,7 @@ isNullEvent <- function(value) {
 #' if (interactive()) {
 #' options(device.ask.default = FALSE)
 #'
-#' library(shiny)
+#' library(shinyV4)
 #' library(magrittr)
 #'
 #' ui <- fluidPage(
