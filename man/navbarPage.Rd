@@ -8,7 +8,7 @@
 navbarPage(title, ..., id = NULL, selected = NULL,
   position = c("static-top", "fixed-top", "fixed-bottom"), header = NULL,
   footer = NULL, inverse = FALSE, collapsible = FALSE, collapsable,
-  fluid = TRUE, responsive = NULL, theme = NULL, windowTitle = title)
+  fluid = TRUE, theme = NULL, windowTitle = title)
 
 navbarMenu(title, ..., icon = NULL)
 }
@@ -54,9 +54,6 @@ elements into a menu when the width of the browser is less than 940 pixels
 
 \item{fluid}{\code{TRUE} to use a fluid layout. \code{FALSE} to use a fixed
 layout.}
-
-\item{responsive}{This option is deprecated; it is no longer optional with
-Bootstrap 3.}
 
 \item{theme}{Alternative Bootstrap stylesheet (normally a css file within the
 www directory). For example, to use the theme located at

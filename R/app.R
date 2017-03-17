@@ -454,8 +454,7 @@ knit_print.shiny.appobj <- function(x, ...) {
     height <- validateCssUnit(height)
     output <- tags$div(
       style=paste("width:", width, "; height:", height, "; text-align: center;",
-                  "box-sizing: border-box;", "-moz-box-sizing: border-box;",
-                  "-webkit-box-sizing: border-box;"),
+                  "box-sizing: border-box;"),
       class="muted well",
       "Shiny applications not supported in static R Markdown documents")
   }

@@ -60,6 +60,7 @@ bootstrapLib <- function(theme = NULL) {
       file = system.file("www/shared/bootstrap", package = "shinyV4")
     ),
     script = c(
+      "js/tether.min.js",
       "js/bootstrap.min.js"
     ),
     stylesheet = if (is.null(theme)) "css/bootstrap.min.css",
@@ -260,8 +261,6 @@ pageWithSidebar <- function(headerPanel,
 #' @param collapsable Deprecated; use \code{collapsible} instead.
 #' @param fluid \code{TRUE} to use a fluid layout. \code{FALSE} to use a fixed
 #'   layout.
-#' @param responsive This option is deprecated; it is no longer optional with
-#'   Bootstrap 3.
 #' @param theme Alternative Bootstrap stylesheet (normally a css file within the
 #'   www directory). For example, to use the theme located at
 #'   \code{www/bootstrap.css} you would use \code{theme = "bootstrap.css"}.
@@ -306,7 +305,6 @@ navbarPage <- function(title,
                        collapsible = FALSE,
                        collapsable,
                        fluid = TRUE,
-                       responsive = NULL,
                        theme = NULL,
                        windowTitle = title) {
 
