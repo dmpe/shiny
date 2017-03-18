@@ -173,12 +173,12 @@ showcaseAppInfo <- function() {
         id="showcase-card",
         div(class="row",
           if (hasDesc || hasReadme) {
-            div(id="showcase-app-metadata", class="col-sm-4",
+            div(id="showcase-app-metadata", class="col-md-4",
                 if (hasDesc) appMetadata(desc) else "",
                 if (hasReadme) div(id="readme-md"))
           } else "",
           div(id="showcase-code-inline",
-              class=if (hasReadme || hasDesc) "col-sm-8" else "col-sm-10 col-sm-offset-1",
+              class=if (hasReadme || hasDesc) "col-md-8" else "col-md-10 col-md-offset-1",
               showcaseCodeTabs(
                 if (hasDesc && "License" %in% colnames(desc)) {
                   small(class="showcase-code-license text-muted",

@@ -5,7 +5,7 @@
 \alias{fixedRow}
 \title{Create a page with a fixed layout}
 \usage{
-fixedPage(..., title = NULL, responsive = NULL, theme = NULL)
+fixedPage(..., title = NULL, theme = NULL)
 
 fixedRow(...)
 }
@@ -13,9 +13,6 @@ fixedRow(...)
 \item{...}{Elements to include within the container}
 
 \item{title}{The browser window title (defaults to the host URL of the page)}
-
-\item{responsive}{This option is deprecated; it is no longer optional with
-Bootstrap 3.}
 
 \item{theme}{Alternative Bootstrap stylesheet (normally a css file within the
 www directory). For example, to use the theme located at

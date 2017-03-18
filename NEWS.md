@@ -4,7 +4,7 @@ shiny 1.0.1
 ## Full changelog
 
 ### Breaking changes
--Upgraded Bootstrap library to v4. 
+-Upgraded Bootstrap library to v4.
 
 shiny 1.0.0.9001
 ================

@@ -109,8 +109,6 @@ fluidRow <- function(...) {
 #'
 #' @param ... Elements to include within the container
 #' @param title The browser window title (defaults to the host URL of the page)
-#' @param responsive This option is deprecated; it is no longer optional with
-#'   Bootstrap 3.
 #' @param theme Alternative Bootstrap stylesheet (normally a css file within the
 #'   www directory). For example, to use the theme located at
 #'   \code{www/bootstrap.css} you would use \code{theme = "bootstrap.css"}.
@@ -150,10 +148,9 @@ fluidRow <- function(...) {
 #'
 #' @rdname fixedPage
 #' @export
-fixedPage <- function(..., title = NULL, responsive = NULL, theme = NULL) {
+fixedPage <- function(..., title = NULL, theme = NULL) {
   bootstrapPage(div(class = "container", ...),
                 title = title,
-                responsive = responsive,
                 theme = theme)
 }
 
@@ -224,9 +221,9 @@ column <- function(width, ..., offset = 0) {
   if (!is.numeric(width) || (width < 1) || (width > 12))
     stop("column width must be between 1 and 12")
 
-  colClass <- paste0("col-sm-", width)
+  colClass <- paste0("col-md-", width)
   if (offset > 0)
-    colClass <- paste0(colClass, " col-sm-offset-", offset)
+    colClass <- paste0(colClass, " col-md-offset-", offset)
   div(class = colClass, ...)
 }
 

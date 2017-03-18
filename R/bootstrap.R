@@ -372,7 +372,6 @@ navbarPage <- function(title,
   # build the page
   bootstrapPage(
     title = windowTitle,
-    responsive = responsive,
     theme = theme,
     tags$nav(class=navbarClass, role="navigation", containerDiv),
     contentDiv
@@ -403,7 +402,7 @@ navbarMenu <- function(title, ..., icon = NULL) {
 headerPanel <- function(title, windowTitle=title) {
   tagList(
     tags$head(tags$title(windowTitle)),
-    div(class="col-sm-12",
+    div(class="col-md-12",
       h1(title)
     )
   )
@@ -444,7 +443,7 @@ cardPanel <- function(...) {
 #' )
 #' @export
 sidebarPanel <- function(..., width = 4) {
-  div(class=paste0("col-sm-", width),
+  div(class=paste0("col-md-", width),
     tags$form(class="card",
       ...
     )
@@ -470,7 +469,7 @@ sidebarPanel <- function(..., width = 4) {
 #' )
 #' @export
 mainPanel <- function(..., width = 8) {
-  div(class=paste0("col-sm-", width),
+  div(class=paste0("col-md-", width),
     ...
   )
 }
