@@ -292,7 +292,7 @@ pre.shiny-text-output.noplaceholder:empty {
 }
 
 /* Don't limit the width of inputs in a sidebar. */
-.well .shiny-input-container {
+.card .shiny-input-container {
   width: auto;
 }
 

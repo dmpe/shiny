@@ -25,7 +25,7 @@ sd_section("UI Layout",
     "flowLayout",
     "splitLayout",
     "verticalLayout",
-    "wellPanel",
+    "cardPanel",
     "withMathJax"
   )
 )

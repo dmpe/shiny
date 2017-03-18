@@ -6,5 +6,5 @@ baduicall <- function() {
 }
 
 ui <- fluidPage(
-  wellPanel(baduicall())
+  cardPanel(baduicall())
 )

@@ -1,5 +1,5 @@
 controlLabel <- function(controlName, label) {
-  label %AND% tags$label(class = "control-label", `for` = controlName, label)
+  label %AND% tags$label(class = "form-control-label", `for` = controlName, label)
 }
 
 

@@ -138,13 +138,13 @@
 
     var metadataElement = document.getElementById("showcase-app-metadata");
     if (metadataElement === null) {
-      // if there's no app metadata, show and hide the entire well container
+      // if there's no app metadata, show and hide the entire card container
       // when the code changes position
-      var wellElement = $("#showcase-well");
+      var cardElement = $("#showcase-card");
       if (above) {
-        wellElement.fadeOut(animateCodeMs);
+        cardElement.fadeOut(animateCodeMs);
       } else {
-        wellElement.fadeIn(animateCodeMs);
+        cardElement.fadeIn(animateCodeMs);
       }
     }
 
@@ -267,4 +267,3 @@
   if (window.hljs)
     hljs.initHighlightingOnLoad();
 })();
-

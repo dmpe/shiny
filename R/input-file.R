@@ -104,7 +104,7 @@ fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
 
     div(class = "input-group",
       tags$label(class = "input-group-btn",
-        span(class = "btn btn-default btn-file",
+        span(class = "btn btn-secondary btn-file",
           "Browse...",
           inputTag
         )

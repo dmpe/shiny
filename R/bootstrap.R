@@ -317,7 +317,7 @@ navbarPage <- function(title,
   pageTitle <- title
 
   # navbar class based on options
-  navbarClass <- "navbar navbar-default"
+  navbarClass <- "navbar navbar-light"
   position <- match.arg(position)
   if (!is.null(position))
     navbarClass <- paste(navbarClass, " navbar-", position, sep = "")
@@ -344,12 +344,9 @@ navbarPage <- function(title,
     navId <- paste("navbar-collapse-", p_randomInt(1000, 10000), sep="")
     containerDiv <- div(class=className("container"),
       div(class="navbar-header",
-        tags$button(type="button", class="navbar-toggle collapsed",
+        tags$button(type="button", class="navbar-toggler collapsed",
           `data-toggle`="collapse", `data-target`=paste0("#", navId),
-          span(class="sr-only", "Toggle navigation"),
-          span(class="icon-bar"),
-          span(class="icon-bar"),
-          span(class="icon-bar")
+          span(class="navbar-toggler-icon", "Toggle navigation")
         ),
         span(class="navbar-brand", pageTitle)
       ),
@@ -412,16 +409,17 @@ headerPanel <- function(title, windowTitle=title) {
   )
 }
 
-#' Create a well panel
+#' Create a card panel
 #'
 #' Creates a panel with a slightly inset border and grey background. Equivalent
-#' to Bootstrap's \code{well} CSS class.
+#' to Bootstrap's \code{card} CSS class. Bootstrap v4 replaces \code{well} CSS
+#' class with \code{card}s class.
 #'
 #' @param ... UI elements to include inside the panel.
 #' @return The newly created panel.
 #' @export
-wellPanel <- function(...) {
-  div(class="well", ...)
+cardPanel <- function(...) {
+  div(class="card", ...)
 }
 
 #' Create a sidebar panel
@@ -447,7 +445,7 @@ wellPanel <- function(...) {
 #' @export
 sidebarPanel <- function(..., width = 4) {
   div(class=paste0("col-sm-", width),
-    tags$form(class="well",
+    tags$form(class="card",
       ...
     )
   )
@@ -531,6 +529,7 @@ conditionalPanel <- function(condition, ...) {
 #'
 #' Create help text which can be added to an input form to provide additional
 #' explanation or context.
+#' Bootstrap v4 replaced \code{help-block} with \code{form-text}
 #'
 #' @param ... One or more help text strings (or other inline HTML elements)
 #' @return A help text element that can be added to a UI definition.
@@ -541,7 +540,7 @@ conditionalPanel <- function(condition, ...) {
 #'          "summary will be based on the full dataset.")
 #' @export
 helpText <- function(...) {
-  span(class="help-block", ...)
+  span(class="form-text", ...)
 }
 
 
@@ -644,7 +643,7 @@ tabsetPanel <- function(...,
 #' @param selected The \code{value} (or, if none was supplied, the \code{title})
 #'   of the navigation item that should be selected by default. If \code{NULL},
 #'   the first navigation will be selected.
-#' @param well \code{TRUE} to place a well (gray rounded rectangle) around the
+#' @param card \code{TRUE} to place a card (gray rounded rectangle) around the
 #'   navigation list.
 #' @param fluid \code{TRUE} to use fluid layout; \code{FALSE} to use fixed
 #'   layout.
@@ -674,7 +673,7 @@ tabsetPanel <- function(...,
 navlistPanel <- function(...,
                          id = NULL,
                          selected = NULL,
-                         well = TRUE,
+                         card = TRUE,
                          fluid = TRUE,
                          widths = c(4, 8)) {
 
@@ -696,7 +695,7 @@ navlistPanel <- function(...,
 
   # create the columns
   columns <- list(
-    column(widths[[1]], class=ifelse(well, "well", ""), tabset$navList),
+    column(widths[[1]], class=ifelse(card, "card", ""), tabset$navList),
     column(widths[[2]], tabset$content)
   )
 
@@ -815,9 +814,8 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         # add optional icon
         aTag <- appendIcon(aTag, divTag$iconClass)
 
-        # add the title and caret
+        # add the title
         aTag <- tagAppendChild(aTag, divTag$title)
-        aTag <- tagAppendChild(aTag, tags$b(class="caret"))
 
         # build the dropdown list element
         liTag <- tags$li(class = "dropdown", aTag)
@@ -825,7 +823,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         # text filter for separators
         textFilter <- function(text) {
           if (grepl("^\\-+$", text))
-            tags$li(class="divider")
+            tags$li(class="dropdown-divider")
           else
             tags$li(class="dropdown-header", text)
         }
@@ -1172,7 +1170,7 @@ imageOutput <- function(outputId, width = "100%", height="400px",
 #'         verbatimTextOutput("plot_hoverinfo")
 #'       ),
 #'       column(width = 4,
-#'         wellPanel(actionButton("newplot", "New plot")),
+#'         cardPanel(actionButton("newplot", "New plot")),
 #'         verbatimTextOutput("plot_brushinfo")
 #'       )
 #'     )
@@ -1238,7 +1236,7 @@ imageOutput <- function(outputId, width = "100%", height="400px",
 #'         verbatimTextOutput("image_hoverinfo")
 #'       ),
 #'       column(width = 4,
-#'         wellPanel(actionButton("newimage", "New image")),
+#'         cardPanel(actionButton("newimage", "New image")),
 #'         verbatimTextOutput("image_brushinfo")
 #'       )
 #'     )
@@ -1440,7 +1438,7 @@ downloadButton <- function(outputId,
                            label="Download",
                            class=NULL, ...) {
   aTag <- tags$a(id=outputId,
-                 class=paste('btn btn-default shiny-download-link', class),
+                 class=paste('btn btn-secondary shiny-download-link', class),
                  href='',
                  target='_blank',
                  download=NA,

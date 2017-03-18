@@ -160,7 +160,7 @@ shinyApp(
         verbatimTextOutput("plot_hoverinfo")
       ),
       column(width = 4,
-        wellPanel(actionButton("newplot", "New plot")),
+        cardPanel(actionButton("newplot", "New plot")),
         verbatimTextOutput("plot_brushinfo")
       )
     )
@@ -226,7 +226,7 @@ shinyApp(
         verbatimTextOutput("image_hoverinfo")
       ),
       column(width = 4,
-        wellPanel(actionButton("newimage", "New image")),
+        cardPanel(actionButton("newimage", "New image")),
         verbatimTextOutput("image_brushinfo")
       )
     )

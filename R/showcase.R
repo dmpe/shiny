@@ -133,7 +133,7 @@ showcaseCodeTabs <- function(codeLicense) {
   }
   with(tags, div(id="showcase-code-tabs",
     a(id="showcase-code-position-toggle",
-      class="btn btn-default btn-sm",
+      class="btn btn-secondary btn-sm",
       onclick="toggleCodePosition()",
       icon("level-up"),
       "show with app"),
@@ -169,8 +169,8 @@ showcaseAppInfo <- function() {
     desc <- read.dcf(con)
   }
   with(tags,
-    div(class="container-fluid shiny-code-container well",
-        id="showcase-well",
+    div(class="container-fluid shiny-code-container card",
+        id="showcase-card",
         div(class="row",
           if (hasDesc || hasReadme) {
             div(id="showcase-app-metadata", class="col-sm-4",
@@ -221,4 +221,3 @@ showcaseUI <- function(ui) {
     showcaseBody(ui)
   )
 }
-

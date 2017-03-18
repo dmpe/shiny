@@ -15,6 +15,7 @@ A help text element that can be added to a UI definition.
 \description{
 Create help text which can be added to an input form to provide additional
 explanation or context.
+Bootstrap v4 replaced \code{help-block} with \code{form-text}
 }
 \examples{
 helpText("Note: while the data view will show only",

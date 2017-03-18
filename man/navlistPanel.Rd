@@ -4,7 +4,7 @@
 \alias{navlistPanel}
 \title{Create a navigation list panel}
 \usage{
-navlistPanel(..., id = NULL, selected = NULL, well = TRUE, fluid = TRUE,
+navlistPanel(..., id = NULL, selected = NULL, card = TRUE, fluid = TRUE,
   widths = c(4, 8))
 }
 \arguments{
@@ -19,7 +19,7 @@ value will correspond to the \code{value} argument that is passed to
 of the navigation item that should be selected by default. If \code{NULL},
 the first navigation will be selected.}
 
-\item{well}{\code{TRUE} to place a well (gray rounded rectangle) around the
+\item{card}{\code{TRUE} to place a card (gray rounded rectangle) around the
 navigation list.}
 
 \item{fluid}{\code{TRUE} to use fluid layout; \code{FALSE} to use fixed
