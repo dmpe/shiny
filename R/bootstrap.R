@@ -1347,13 +1347,13 @@ tableOutput <- function(outputId) {
 
 dataTableDependency <- list(
   htmlDependency(
-    "datatables", "1.10.5", c(href = "shared/datatables"),
+    "datatables", "1.10.13", c(href = "shared/datatables"),
     script = "js/jquery.dataTables.min.js"
   ),
   htmlDependency(
-    "datatables-bootstrap", "1.10.5", c(href = "shared/datatables"),
-    stylesheet = c("css/dataTables.bootstrap.css", "css/dataTables.extra.css"),
-    script = "js/dataTables.bootstrap.js"
+    "datatables-bootstrap", "1.10.13", c(href = "shared/datatables"),
+    stylesheet = c("css/dataTables.bootstrap4.css", "css/dataTables.extra.css"),
+    script = "js/dataTables.bootstrap4.js"
   )
 )
 
