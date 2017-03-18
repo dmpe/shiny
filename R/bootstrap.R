@@ -687,7 +687,7 @@ navlistPanel <- function(...,
   # build the tabset
   tabs <- list(...)
   tabset <- buildTabset(tabs,
-                        "nav nav-pills nav-stacked",
+                        "nav nav-pills flex-column",
                         textFilter,
                         id,
                         selected)

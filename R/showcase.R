@@ -178,7 +178,7 @@ showcaseAppInfo <- function() {
                 if (hasReadme) div(id="readme-md"))
           } else "",
           div(id="showcase-code-inline",
-              class=if (hasReadme || hasDesc) "col-md-8" else "col-md-10 col-md-offset-1",
+              class=if (hasReadme || hasDesc) "col-md-8" else "col-md-10 offset-md-1",
               showcaseCodeTabs(
                 if (hasDesc && "License" %in% colnames(desc)) {
                   small(class="showcase-code-license text-muted",

@@ -223,7 +223,7 @@ column <- function(width, ..., offset = 0) {
 
   colClass <- paste0("col-md-", width)
   if (offset > 0)
-    colClass <- paste0(colClass, " col-md-offset-", offset)
+    colClass <- paste0(colClass, " offset-md-", offset)
   div(class = colClass, ...)
 }
 
