@@ -102,16 +102,11 @@ fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
     style = if (!is.null(width)) paste0("width: ", validateCssUnit(width), ";"),
     label %AND% tags$label(label),
 
-    div(class = "input-group",
-      tags$label(class = "input-group-btn",
-        span(class = "btn btn-secondary btn-file",
-          "Browse...",
-          inputTag
-        )
+    tags$input(type = "file", class = "custom-file-input", id = "file"),
+
+    label(class = "custom-file",
+      tags$span(class = "custom-file-control",inputTag)
       ),
-      tags$input(type = "text", class = "form-control",
-        placeholder = "No file selected", readonly = "readonly"
-      )
     ),
 
     tags$div(
