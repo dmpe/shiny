@@ -7,8 +7,8 @@
 \usage{
 navbarPage(title, ..., id = NULL, selected = NULL,
   position = c("static-top", "fixed-top", "fixed-bottom"), header = NULL,
-  footer = NULL, inverse = FALSE, collapsible = FALSE, collapsable,
-  fluid = TRUE, theme = NULL, windowTitle = title)
+  footer = NULL, inverse = FALSE, collapsible = FALSE, fluid = TRUE,
+  theme = NULL, windowTitle = title)
 
 navbarMenu(title, ..., icon = NULL)
 }
@@ -49,8 +49,6 @@ navigation bar}
 \item{collapsible}{\code{TRUE} to automatically collapse the navigation
 elements into a menu when the width of the browser is less than 940 pixels
 (useful for viewing on smaller touchscreen device)}
-
-\item{collapsable}{Deprecated; use \code{collapsible} instead.}
 
 \item{fluid}{\code{TRUE} to use a fluid layout. \code{FALSE} to use a fixed
 layout.}

@@ -12,8 +12,7 @@ fileInput(inputId, label, multiple = FALSE, accept = NULL, width = NULL)
 \item{label}{Display label for the control, or \code{NULL} for no label.}
 
 \item{multiple}{Whether the user should be allowed to select and upload
-multiple files at once. \bold{Does not work on older browsers, including
-Internet Explorer 9 and earlier.}}
+multiple files at once.}
 
 \item{accept}{A character vector of MIME types; gives the browser a hint of
 what kind of files the server is expecting.}

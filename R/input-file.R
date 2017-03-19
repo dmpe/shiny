@@ -23,8 +23,7 @@
 #'
 #' @inheritParams textInput
 #' @param multiple Whether the user should be allowed to select and upload
-#'   multiple files at once. \bold{Does not work on older browsers, including
-#'   Internet Explorer 9 and earlier.}
+#'   multiple files at once.
 #' @param accept A character vector of MIME types; gives the browser a hint of
 #'   what kind of files the server is expecting.
 #'
@@ -106,7 +105,6 @@ fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
 
     label(class = "custom-file",
       tags$span(class = "custom-file-control",inputTag)
-      ),
     ),
 
     tags$div(

@@ -258,7 +258,6 @@ pageWithSidebar <- function(headerPanel,
 #' @param collapsible \code{TRUE} to automatically collapse the navigation
 #'   elements into a menu when the width of the browser is less than 940 pixels
 #'   (useful for viewing on smaller touchscreen device)
-#' @param collapsable Deprecated; use \code{collapsible} instead.
 #' @param fluid \code{TRUE} to use a fluid layout. \code{FALSE} to use a fixed
 #'   layout.
 #' @param theme Alternative Bootstrap stylesheet (normally a css file within the
@@ -303,15 +302,9 @@ navbarPage <- function(title,
                        footer = NULL,
                        inverse = FALSE,
                        collapsible = FALSE,
-                       collapsable,
                        fluid = TRUE,
                        theme = NULL,
                        windowTitle = title) {
-
-  if (!missing(collapsable)) {
-    shinyDeprecated("`collapsable` is deprecated; use `collapsible` instead.")
-    collapsible <- collapsable
-  }
 
   # alias title so we can avoid conflicts w/ title in withTags
   pageTitle <- title
@@ -444,7 +437,7 @@ cardPanel <- function(...) {
 #' @export
 sidebarPanel <- function(..., width = 4) {
   div(class=paste0("col-md-", width),
-    tags$form(class="card",
+    tags$form(class="card card-block bg-faded",
       ...
     )
   )
