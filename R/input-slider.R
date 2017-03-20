@@ -18,8 +18,6 @@
 #'   number of digits (for example, 1 will round to the nearest 10, and -2 will
 #'   round to the nearest .01). Any rounding will be applied after snapping to
 #'   the nearest step.
-#' @param format Deprecated.
-#' @param locale Deprecated.
 #' @param ticks \code{FALSE} to hide tick marks, \code{TRUE} to show them
 #'   according to some simple heuristics.
 #' @param animate \code{TRUE} to show simple animation controls with default
@@ -72,19 +70,11 @@
 #' }
 #' @export
 sliderInput <- function(inputId, label, min, max, value, step = NULL,
-                        round = FALSE, format = NULL, locale = NULL,
-                        ticks = TRUE, animate = FALSE, width = NULL, sep = ",",
+                        round = FALSE, ticks = TRUE, animate = FALSE,
+                        width = NULL, sep = ",",
                         pre = NULL, post = NULL, timeFormat = NULL,
                         timezone = NULL, dragRange = TRUE)
 {
-  if (!missing(format)) {
-    shinyDeprecated(msg = "The `format` argument to sliderInput is deprecated. Use `sep`, `pre`, and `post` instead.",
-                    version = "0.10.2.2")
-  }
-  if (!missing(locale)) {
-    shinyDeprecated(msg = "The `locale` argument to sliderInput is deprecated. Use `sep`, `pre`, and `post` instead.",
-                    version = "0.10.2.2")
-  }
 
   value <- restoreInput(id = inputId, default = value)
 

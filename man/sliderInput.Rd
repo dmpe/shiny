@@ -6,9 +6,8 @@
 \title{Slider Input Widget}
 \usage{
 sliderInput(inputId, label, min, max, value, step = NULL, round = FALSE,
-  format = NULL, locale = NULL, ticks = TRUE, animate = FALSE,
-  width = NULL, sep = ",", pre = NULL, post = NULL, timeFormat = NULL,
-  timezone = NULL, dragRange = TRUE)
+  ticks = TRUE, animate = FALSE, width = NULL, sep = ",", pre = NULL,
+  post = NULL, timeFormat = NULL, timezone = NULL, dragRange = TRUE)
 
 animationOptions(interval = 1000, loop = FALSE, playButton = NULL,
   pauseButton = NULL)
@@ -37,10 +36,6 @@ the values are dates, \code{step} is in days; if the values are times
 number of digits (for example, 1 will round to the nearest 10, and -2 will
 round to the nearest .01). Any rounding will be applied after snapping to
 the nearest step.}
-
-\item{format}{Deprecated.}
-
-\item{locale}{Deprecated.}
 
 \item{ticks}{\code{FALSE} to hide tick marks, \code{TRUE} to show them
 according to some simple heuristics.}

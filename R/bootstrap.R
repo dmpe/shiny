@@ -800,7 +800,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
 
         # create the a tag
         aTag <- tags$a(href="#",
-                       class="dropdown-toggle",
+                       class="nav-link dropdown-toggle",
                        `data-toggle`="dropdown")
 
         # add optional icon
@@ -826,7 +826,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
 
         # If this navbar menu contains a selected item, mark it as active
         if (containsSelected(divTag$tabs)) {
-          liTag$attribs$class <- paste(liTag$attribs$class, "active")
+          liTag$attribs$class <- paste(liTag$attribs$class, "nav-link active")
         }
 
         tabNavList <<- tagAppendChild(tabNavList, liTag)
@@ -845,7 +845,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         tabValue <- divTag$attribs$`data-value`
 
         # create the a tag
-        aTag <- tags$a(href=paste("#", thisId, sep=""),
+        aTag <- tags$a(href=paste("#", thisId, sep=""), class = "nav-link",
                        `data-toggle` = "tab",
                        `data-value` = tabValue)
 
