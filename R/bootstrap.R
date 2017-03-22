@@ -619,7 +619,7 @@ tabsetPanel <- function(...,
   second <- tabset$content
 
   # create the tab div
-  tags$div(class = "tabbable", first, second)
+  tags$ul(first, second)
 }
 
 #' Create a navigation list panel
