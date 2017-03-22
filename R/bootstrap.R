@@ -297,7 +297,7 @@ navbarPage <- function(title,
                        ...,
                        id = NULL,
                        selected = NULL,
-                       position = c("static-top", "fixed-top", "fixed-bottom"),
+                       position = c("static-top", "fixed-top", "fixed-bottom", "sticky-top"),
                        header = NULL,
                        footer = NULL,
                        inverse = FALSE,
@@ -313,7 +313,7 @@ navbarPage <- function(title,
   navbarClass <- "navbar navbar-light"
   position <- match.arg(position)
   if (!is.null(position))
-    navbarClass <- paste(navbarClass, " navbar-", position, sep = "")
+    navbarClass <- paste(navbarClass, " ", position, sep = "")
   if (inverse)
     navbarClass <- paste(navbarClass, "navbar-inverse")
 
@@ -336,7 +336,7 @@ navbarPage <- function(title,
   if (collapsible) {
     navId <- paste("navbar-collapse-", p_randomInt(1000, 10000), sep="")
     containerDiv <- div(class=className("container"),
-      div(class="navbar-header",
+      div(class="navbar-brand",
         tags$button(type="button", class="navbar-toggler collapsed",
           `data-toggle`="collapse", `data-target`=paste0("#", navId),
           span(class="navbar-toggler-icon", "Toggle navigation")
@@ -347,7 +347,7 @@ navbarPage <- function(title,
     )
   } else {
     containerDiv <- div(class=className("container"),
-      div(class="navbar-header",
+      div(class="navbar-brand",
         span(class="navbar-brand", pageTitle)
       ),
       tabset$navList
