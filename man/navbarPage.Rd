@@ -6,9 +6,9 @@
 \title{Create a page with a top level navigation bar}
 \usage{
 navbarPage(title, ..., id = NULL, selected = NULL,
-  position = c("static-top", "fixed-top", "fixed-bottom"), header = NULL,
-  footer = NULL, inverse = FALSE, collapsible = FALSE, fluid = TRUE,
-  theme = NULL, windowTitle = title)
+  position = c("static-top", "fixed-top", "fixed-bottom", "sticky-top"),
+  header = NULL, footer = NULL, inverse = FALSE, collapsible = FALSE,
+  fluid = TRUE, theme = NULL, windowTitle = title)
 
 navbarMenu(title, ..., icon = NULL)
 }
