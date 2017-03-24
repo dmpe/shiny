@@ -15,6 +15,8 @@ shiny 1.0.0.9001
 
 ### New features
 
+* Added `reactiveVal` function, for storing a single value which can be (reactively) read and written. Similar to `reactiveValues`, except that `reactiveVal` just lets you store a single value instead of storing multiple values by name. ([#1614](https://github.com/rstudio/shiny/pull/1614))
+
 ### Minor new features and improvements
 
 * Updated `tools/README.md` with more detailed instructions. ([##1616](https://github.com/rstudio/shiny/pull/1616))
@@ -53,6 +55,8 @@ in shiny apps. For more info, see the documentation (`?updateQueryString` and `?
 * Fixed [#1598](https://github.com/rstudio/shiny/issues/1598): `setBookmarkExclude()` did not work properly inside of modules. ([#1599](https://github.com/rstudio/shiny/pull/1599))
 
 * Fixed [#1605](https://github.com/rstudio/shiny/issues/1605): sliders did not move when clicked on the bar area. ([#1610](https://github.com/rstudio/shiny/pull/1610))
+
+* Fixed [#1621](https://github.com/rstudio/shiny/issues/1621): if a `reactiveTimer`'s session was closed before the first time that the `reactiveTimer` fired, then the `reactiveTimer` would not get cleared and would keep firing indefinitely. ([#1623](https://github.com/rstudio/shiny/pull/1623))
 
 ### Library updates
 
