@@ -1415,27 +1415,22 @@ downloadLink <- function(outputId, label="Download", class=NULL, ...) {
 #' \code{\link{navbarPage}}.
 #'
 #' @param name Name of icon. Icons are drawn from the
-#'   \href{http://fontawesome.io/icons/}{Font Awesome} and
-#'   \href{http://getbootstrap.com/components/#glyphicons}{Glyphicons"}
-#'   libraries. Note that the "fa-" and "glyphicon-" prefixes should not be used
+#'   \href{http://fontawesome.io/icons/}{Font Awesome} libraries. 
+#'   Note that the "fa-" prefix should not be used
 #'   in icon names (i.e. the "fa-calendar" icon should be referred to as
 #'   "calendar")
 #' @param class Additional classes to customize the style of the icon (see the
 #'   \href{http://fontawesome.io/examples/}{usage examples} for details on
 #'   supported styles).
-#' @param lib Icon library to use ("font-awesome" or "glyphicon")
 #'
 #' @return An icon element
 #'
 #' @seealso For lists of available icons, see
-#'   \href{http://fontawesome.io/icons/}{http://fontawesome.io/icons/} and
-#'   \href{http://getbootstrap.com/components/#glyphicons}{http://getbootstrap.com/components/#glyphicons}.
-#'
+#'   \href{http://fontawesome.io/icons/}{http://fontawesome.io/icons/}
 #'
 #' @examples
 #' icon("calendar")               # standard icon
 #' icon("calendar", "fa-3x")      # 3x normal size
-#' icon("cog", lib = "glyphicon") # From glyphicon library
 #'
 #' # add an icon to a submit button
 #' submitButton("Update View", icon = icon("refresh"))
@@ -1446,18 +1441,12 @@ downloadLink <- function(outputId, label="Download", class=NULL, ...) {
 #'   tabPanel("Table", icon = icon("table"))
 #' )
 #' @export
-icon <- function(name, class = NULL, lib = "font-awesome") {
+icon <- function(name, class = NULL) {
   prefixes <- list(
     "font-awesome" = "fa",
-    "glyphicon" = "glyphicon"
   )
-  prefix <- prefixes[[lib]]
+  prefix <- prefixes[["font-awesome"]]
 
-  # determine stylesheet
-  if (is.null(prefix)) {
-    stop("Unknown font library '", lib, "' specified. Must be one of ",
-         paste0('"', names(prefixes), '"', collapse = ", "))
-  }
 
   # build the icon class (allow name to be null so that other functions
   # e.g. buildTabset can pass an explicit class value)
@@ -1469,7 +1458,7 @@ icon <- function(name, class = NULL, lib = "font-awesome") {
 
   iconTag <- tags$i(class = iconClass)
 
-  # font-awesome needs an additional dependency (glyphicon is in bootstrap)
+  # font-awesome needs an additional dependency
   if (lib == "font-awesome") {
     htmlDependencies(iconTag) <- htmlDependency(
       "font-awesome", "4.7.0", c(href="shared/font-awesome"),
