@@ -155,11 +155,11 @@ modalDialog <- function(..., title = NULL, footer = modalButton("Dismiss"),
     `data-keyboard` = if (!easyClose) "false",
 
     div(
-      class = "modal-dialog",
+      class = "modal-dialog", role = "document", 
       class = switch(size, s = "modal-sm", m = NULL, l = "modal-lg"),
       div(class = "modal-content",
         if (!is.null(title)) div(class = "modal-header",
-          tags$h4(class = "modal-title", title)
+          tags$h5(class = "modal-title", title)
         ),
         div(class = "modal-body", ...),
         if (!is.null(footer)) div(class = "modal-footer", footer)
@@ -177,7 +177,7 @@ modalDialog <- function(..., title = NULL, footer = modalButton("Dismiss"),
 #' @seealso \code{\link{modalDialog}} for examples.
 #' @export
 modalButton <- function(label, icon = NULL) {
-  tags$button(type = "button", class = "btn btn-secondary",
+  tags$button(type = "button", class = "btn btn-primary",
     `data-dismiss` = "modal", validateIcon(icon), label
   )
 }
