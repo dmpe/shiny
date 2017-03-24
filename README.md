@@ -14,7 +14,7 @@ Backward compatibility is not preserved due to a complete rewrite of Bootstrap.
 The migration guide from v3 is here: [https://v4-alpha.getbootstrap.com/migration/](https://v4-alpha.getbootstrap.com/migration/)
 
 * Major: Dropped IE8, IE9, and iOS 6 support. v4 is now only IE10+ and iOS 7+. For sites needing either of those, use v3.
-* Major: Dropped the Glyphicons icon font. Both are however included in the library. 
+* Major: Dropped icons from Bootstrap. Only font-awesome icons are included in Shiny and supported.
 
 ## Features
 
