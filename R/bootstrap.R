@@ -618,8 +618,7 @@ tabsetPanel <- function(...,
   first <- tabset$navList
   second <- tabset$content
 
-  # create the tab div
-  tags$ul(first, second)
+  tabset
 }
 
 #' Create a navigation list panel
@@ -801,7 +800,8 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         # create the a tag
         aTag <- tags$a(href="#",
                        class="nav-link dropdown-toggle",
-                       `data-toggle`="dropdown")
+                       `data-toggle`="dropdown",
+                       `role` = "button")
 
         # add optional icon
         aTag <- appendIcon(aTag, divTag$iconClass)
@@ -810,7 +810,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         aTag <- tagAppendChild(aTag, divTag$title)
 
         # build the dropdown list element
-        liTag <- tags$li(class = "dropdown", aTag)
+        liTag <- tags$li(class = "dropdown-item", aTag)
 
         # text filter for separators
         textFilter <- function(text) {
@@ -843,6 +843,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         tabId <<- tabId + 1
 
         tabValue <- divTag$attribs$`data-value`
+        divTag$attribs$role <- "tabpanel"
 
         # create the a tag
         aTag <- tags$a(href=paste("#", thisId, sep=""), class = "nav-link",
@@ -857,11 +858,12 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
 
         # create the li tag
         liTag <- tags$li(aTag)
+        liTag$attribs$class <- "nav-item"
 
         # If selected, set appropriate classes on li tag and div tag.
         if (isSelected(divTag)) {
-          liTag$attribs$class <- "nav-item"
-          divTag$attribs$class <- "nav-link active"
+          divTag$attribs$class <- "tab-pane active"
+          aTag$attribs$class <- "active"
         }
 
         divTag$attribs$title <- NULL
