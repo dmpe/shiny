@@ -860,11 +860,12 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         liTag <- tags$li(aTag)
         liTag$attribs$class <- "nav-item"
 
-        # If selected, set appropriate classes on li tag and div tag.
+        # If selected, set appropriate classes on a tag and div tag.
         if (isSelected(divTag)) {
           divTag$attribs$class <- "tab-pane active"
-          aTag$attribs$class <- "active"
+          aTag$attribs$class <- "nav-link active"
         }
+        tags$head(tags$script("$(function(){$('nav-link a:first').tab('show');}); "))
 
         divTag$attribs$title <- NULL
 
