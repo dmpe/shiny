@@ -8,7 +8,7 @@ icon(name, class = NULL)
 }
 \arguments{
 \item{name}{Name of icon. Icons are drawn from the
-\href{http://fontawesome.io/icons/}{Font Awesome} libraries. 
+\href{http://fontawesome.io/icons/}{Font Awesome} libraries.
 Note that the "fa-" prefix should not be used
 in icon names (i.e. the "fa-calendar" icon should be referred to as
 "calendar")}

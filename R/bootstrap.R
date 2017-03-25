@@ -1415,7 +1415,7 @@ downloadLink <- function(outputId, label="Download", class=NULL, ...) {
 #' \code{\link{navbarPage}}.
 #'
 #' @param name Name of icon. Icons are drawn from the
-#'   \href{http://fontawesome.io/icons/}{Font Awesome} libraries. 
+#'   \href{http://fontawesome.io/icons/}{Font Awesome} libraries.
 #'   Note that the "fa-" prefix should not be used
 #'   in icon names (i.e. the "fa-calendar" icon should be referred to as
 #'   "calendar")
@@ -1443,7 +1443,7 @@ downloadLink <- function(outputId, label="Download", class=NULL, ...) {
 #' @export
 icon <- function(name, class = NULL) {
   prefixes <- list(
-    "font-awesome" = "fa",
+    "font-awesome" = "fa"
   )
   prefix <- prefixes[["font-awesome"]]
 
@@ -1459,12 +1459,10 @@ icon <- function(name, class = NULL) {
   iconTag <- tags$i(class = iconClass)
 
   # font-awesome needs an additional dependency
-  if (lib == "font-awesome") {
-    htmlDependencies(iconTag) <- htmlDependency(
+  htmlDependencies(iconTag) <- htmlDependency(
       "font-awesome", "4.7.0", c(href="shared/font-awesome"),
       stylesheet = "css/font-awesome.min.css"
-    )
-  }
+  )
 
   iconTag
 }
