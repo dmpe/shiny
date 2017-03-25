@@ -33,8 +33,8 @@ showcaseHead <- function() {
   deps  <- list(
     htmlDependency("jqueryui", "1.12.1", c(href="shared/jqueryui"),
       script = "jquery-ui.min.js"),
-    htmlDependency("showdown", "0.3.1", c(href="shared/showdown/compressed"),
-      script = "showdown.js"),
+    htmlDependency("showdown", "1.6.4", c(href="shared/showdown/compressed"),
+      script = "showdown.min.js"),
     htmlDependency("highlight.js", "6.2", c(href="shared/highlight"),
       script = "highlight.pack.js")
   )
