@@ -865,7 +865,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
           divTag$attribs$class <- "tab-pane active"
           aTag$attribs$class <- "nav-link active"
         }
-        tags$head(tags$script("$(function(){$('nav-link a:first').tab('show');}); "))
+        # tags$head(tags$script("$(function(){$('nav-link a:first').tab('show');}); "))
 
         divTag$attribs$title <- NULL
 
