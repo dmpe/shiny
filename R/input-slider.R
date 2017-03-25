@@ -188,9 +188,9 @@ sliderInput <- function(inputId, label, min, max, value, step = NULL,
 
   if (!is.null(animate) && !identical(animate, FALSE)) {
     if (is.null(animate$playButton))
-      animate$playButton <- icon('play', lib = 'glyphicon')
+      animate$playButton <- icon("play")
     if (is.null(animate$pauseButton))
-      animate$pauseButton <- icon('pause', lib = 'glyphicon')
+      animate$pauseButton <- icon("pause")
 
     sliderTag <- tagAppendChild(
       sliderTag,
