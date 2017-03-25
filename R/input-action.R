@@ -74,7 +74,7 @@ actionLink <- function(inputId, label, icon = NULL, ...) {
 #       remove the previous icon
 # 2) If so, check that the icon has the right format (this does not check whether
 # it is a *real* icon - currently that would require a massive cross reference
-# with the "font-awesome" and the "glyphicon" libraries)
+# with the "font-awesome" library)
 validateIcon <- function(icon) {
   if (is.null(icon) || identical(icon, character(0))) {
     return(icon)

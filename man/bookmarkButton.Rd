@@ -4,8 +4,7 @@
 \alias{bookmarkButton}
 \title{Create a button for bookmarking/sharing}
 \usage{
-bookmarkButton(label = "Bookmark...", icon = shinyV4::icon("link", lib =
-  "glyphicon"),
+bookmarkButton(label = "Bookmark...", icon = shinyV4::icon("link"),
   title = "Bookmark this application's state and get a URL for sharing.", ...,
   id = "._bookmark_")
 }
