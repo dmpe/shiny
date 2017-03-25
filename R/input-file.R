@@ -26,9 +26,6 @@
 #'   multiple files at once.
 #' @param accept A character vector of MIME types; gives the browser a hint of
 #'   what kind of files the server is expecting.
-#' @param buttonLabel The label used on the button. Can be text or an HTML tag
-#'   object.
-#' @param placeholder The text to show before a file has been uploaded.
 #'
 #' @examples
 #' ## Only run examples in interactive R sessions
@@ -72,7 +69,7 @@
 #' }
 #' @export
 fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
-  width = NULL, buttonLabel = "Browse...", placeholder = "No file selected") {
+  width = NULL) {
 
   restoredValue <- restoreInput(id = inputId, default = NULL)
 
@@ -104,19 +101,10 @@ fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
     style = if (!is.null(width)) paste0("width: ", validateCssUnit(width), ";"),
     label %AND% tags$label(label),
 
-  #  tags$label(class = "custom-file",
-  #      tags$input(type = "file", class = "custom-file-input", id = "file",
-  #       placeholder = "No file selected", readonly = "readonly"),
-  #      tags$span(class = "custom-file-control", buttonLabel, inputTag)
-  #    ),
-
-    div(class = "input-group custom-file",
-      tags$label(class = "input-group-btn",
-        tags$span(class = "custom-file-control", buttonLabel, inputTag)
-      ),
-      tags$input(type = "file", class = "custom-file-input",
-        placeholder = placeholder, readonly = "readonly", id="file"
-      )
+    tags$label(class = "custom-file",
+      tags$input(type = "file", class = "custom-file-input", id = "file",
+       placeholder = "No file selected", readonly = "readonly"),
+      tags$span(class = "custom-file-control", "Browse...", inputTag)
     ),
 
     tags$div(
