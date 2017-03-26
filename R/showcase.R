@@ -42,10 +42,8 @@ showcaseHead <- function() {
   mdfile <- file.path.ci(getwd(), 'Readme.md')
   html <- with(tags, tagList(
     script(src="shared/shiny-showcase.js"),
-    link(rel="stylesheet", type="text/css",
-         href="shared/highlight/rstudio.css"),
-    link(rel="stylesheet", type="text/css",
-         href="shared/shiny-showcase.css"),
+    link(rel="stylesheet", type="text/css", href="shared/highlight/rstudio.css"),
+    link(rel="stylesheet", type="text/css", href="shared/shiny-showcase.css"),
     if (file.exists(mdfile))
       script(type="text/markdown", id="showcase-markdown-content",
         paste(readUTF8(mdfile), collapse="\n"))
