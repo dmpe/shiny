@@ -248,7 +248,7 @@
       // not innerText
       var content = mdContent.innerText || mdContent.innerHTML;
       document.getElementById("readme-md").innerHTML =
-        (new Showdown.converter()).makeHtml(content)
+        (new showdown.Converter()).makeHtml(content)
     }
   }
 
