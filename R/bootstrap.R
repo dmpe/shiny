@@ -865,7 +865,6 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
           divTag$attribs$class <- "tab-pane active"
           aTag$attribs$class <- "nav-link active"
         }
-        tags$script(HTML("$(function(){$('nav-link a:first').tab('show');}); "))
 
         divTag$attribs$title <- NULL
 
@@ -879,6 +878,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
     list(navList = tabNavList, content = tabContent)
   }
 
+  tags$script(HTML("$(function(){$('nav-link a:first').tab('show');}); "))
 
   # Finally, actually invoke the functions to do the processing.
   tabs <- findAndMarkSelected(tabs, selected)

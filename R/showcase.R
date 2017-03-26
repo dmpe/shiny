@@ -208,7 +208,7 @@ setShowcaseDefault <- function(showcaseDefault) {
 # Given a UI tag/tagList, wrap it in appropriate tags for showcase mode.
 showcaseUI <- function(ui) {
   # If top-level tag is a body, replace its children with children wrapped in
-    # showcase stuff.
+  # showcase stuff.
   if (inherits(ui, "shiny.tag") && ui$name == "body") {
     ui$children <- showcaseUI(ui$children)
     return(ui)
