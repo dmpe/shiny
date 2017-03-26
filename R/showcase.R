@@ -35,7 +35,7 @@ showcaseHead <- function() {
       script = "jquery-ui.min.js"),
     htmlDependency("showdown", "1.6.4", c(href="shared/showdown/compressed"),
       script = "showdown.min.js"),
-    htmlDependency("highlight.js", "6.2", c(href="shared/highlight"),
+    htmlDependency("highlight.js", "9.10.0", c(href="shared/highlight"),
       script = "highlight.pack.js")
   )
 
@@ -43,6 +43,7 @@ showcaseHead <- function() {
   html <- with(tags, tagList(
     script(src="shared/shiny-showcase.js"),
     link(rel="stylesheet", type="text/css", href="shared/highlight/rstudio.css"),
+    link(rel="stylesheet", type="text/css", href="shared/highlight/default.css"),
     link(rel="stylesheet", type="text/css", href="shared/shiny-showcase.css"),
     if (file.exists(mdfile))
       script(type="text/markdown", id="showcase-markdown-content",
@@ -167,7 +168,7 @@ showcaseAppInfo <- function() {
     desc <- read.dcf(con)
   }
   with(tags,
-    div(class="container-fluid shiny-code-container card",
+    div(class="container-fluid shiny-code-container card card-bloc bg-faded",
         id="showcase-card",
         div(class="row",
           if (hasDesc || hasReadme) {
