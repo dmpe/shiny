@@ -8,7 +8,7 @@ Stack trace (innermost first):
     50: tag
     49: tags$div
     48: div
-    47: wellPanel [${SHINY}/R/bootstrap.R#320]
+    47: cardPanel [${SHINY}/R/bootstrap.R#320]
     46: tag
     45: tags$div
     44: div

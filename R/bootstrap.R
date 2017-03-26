@@ -411,7 +411,7 @@ headerPanel <- function(title, windowTitle=title) {
 #' @return The newly created panel.
 #' @export
 cardPanel <- function(...) {
-  div(class="card", ...)
+  div(class="card card-block bg-faded", ...)
 }
 
 #' Create a sidebar panel
