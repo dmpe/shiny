@@ -153,7 +153,7 @@ shinyApp(ui, server)
 # A basic module that captializes text.
 capitalizerUI <- function(id) {
   ns <- NS(id)
-  wellPanel(
+  cardPanel(
     h4("Text captializer module"),
     textInput(ns("text"), "Enter text:"),
     verbatimTextOutput(ns("out"))

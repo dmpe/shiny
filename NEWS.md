@@ -1088,7 +1088,7 @@ shiny 0.1.8
 
 * The server.R and ui.R filenames are now case insensitive.
 
-* Add `wellPanel` function for creating inset areas on the page.
+* Add `cardPanel` function for creating inset areas on the page.
 
 * Add `bootstrapPage` function for creating new Bootstrap based layouts from scratch.
 
