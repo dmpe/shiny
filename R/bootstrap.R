@@ -758,6 +758,32 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
     })
   }
 
+  # foundSelectedItem_aTag <- FALSE
+  # findAndMarkSelected_aTag <- function(a_links, selected) {
+  #   lapply(a_links, function(liTag) {
+  #     if (foundSelectedItem_aTag) {
+  #       # If we already found the selected tab, no need to keep looking
+  #
+  #     } else if (is.character(liTag)) {
+  #       # Strings don't represent selectable items
+  #
+  #     } else if (inherits(liTag, "shiny.navbarmenu")) {
+  #       # Navbar menu
+  #       liTag$a_links <- findAndMarkSelected_aTag(liTag$a_links, selected)
+  #
+  #     } else {
+  #       # Regular tab item
+  #       if (is.null(selected)) {
+  #         # If selected tab isn't specified, mark first available item
+  #         # as selected.
+  #         foundSelectedItem_aTag <<- TRUE
+  #         liTag <- markSelected(liTag)
+  #       }
+  #     }
+  #
+  #     return(liTag)
+  #   })
+  # }
 
   # Append an optional icon to an aTag
   appendIcon <- function(aTag, iconClass) {
@@ -840,15 +866,23 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         # compute id and assign it to the div
         thisId <- paste("tab", tabsetId, tabId, sep="-")
         divTag$attribs$id <- thisId
+        tabValue <- divTag$attribs$`data-value`
+
+        if (tabId == 1) {
+          # if it is the first one, then make it active by default
+          aTag <- tags$a(href=paste("#", thisId, sep=""), class = "nav-link active",
+                         `data-toggle` = "tab",
+                         `data-value` = tabValue, `role` = "tab")
+        } else {
+        # create the a tag
+          aTag <- tags$a(href=paste("#", thisId, sep=""), class = "nav-link",
+                       `data-toggle` = "tab",
+                       `data-value` = tabValue, `role` = "tab")
+        }
+
         tabId <<- tabId + 1
 
-        tabValue <- divTag$attribs$`data-value`
         divTag$attribs$role <- "tabpanel"
-
-        # create the a tag
-        aTag <- tags$a(href=paste("#", thisId, sep=""), class = "nav-link",
-                       `data-toggle` = "tab",
-                       `data-value` = tabValue)
 
         # append optional icon
         aTag <- appendIcon(aTag, divTag$attribs$`data-icon-class`)
@@ -863,7 +897,6 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         # If selected, set appropriate classes on a tag and div tag.
         if (isSelected(divTag)) {
           divTag$attribs$class <- "tab-pane active"
-          aTag$attribs$class <- "nav-link active"
         }
 
         divTag$attribs$title <- NULL
@@ -877,8 +910,6 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
     lapply(tabs, buildItem)
     list(navList = tabNavList, content = tabContent)
   }
-
-  tags$script(HTML("$(function(){$('nav-link a:first').tab('show');}); "))
 
   # Finally, actually invoke the functions to do the processing.
   tabs <- findAndMarkSelected(tabs, selected)
