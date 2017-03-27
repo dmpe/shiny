@@ -686,7 +686,7 @@ navlistPanel <- function(...,
 
   # create the columns
   columns <- list(
-    column(widths[[1]], class=ifelse(card, "card", ""), tabset$navList),
+    column(widths[[1]], class=ifelse(card, "card card-block bg-faded", ""), tabset$navList),
     column(widths[[2]], tabset$content)
   )
 
