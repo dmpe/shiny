@@ -79,7 +79,7 @@ appMetadata <- function(desc) {
 navTabsHelper <- function(files, prefix = "") {
   lapply(files, function(file) {
     with(tags,
-      li(class=if (tolower(file) %in% c("app.r", "server.r")) "active" else "",
+      li(class=if (tolower(file) %in% c("app.r", "server.r")) "nav nav-item" else "",
          a(href=paste("#", gsub(".", "_", file, fixed=TRUE), "_code", sep=""),
            "data-toggle"="tab", paste0(prefix, file)))
     )
