@@ -758,33 +758,6 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
     })
   }
 
-  # foundSelectedItem_aTag <- FALSE
-  # findAndMarkSelected_aTag <- function(a_links, selected) {
-  #   lapply(a_links, function(liTag) {
-  #     if (foundSelectedItem_aTag) {
-  #       # If we already found the selected tab, no need to keep looking
-  #
-  #     } else if (is.character(liTag)) {
-  #       # Strings don't represent selectable items
-  #
-  #     } else if (inherits(liTag, "shiny.navbarmenu")) {
-  #       # Navbar menu
-  #       liTag$a_links <- findAndMarkSelected_aTag(liTag$a_links, selected)
-  #
-  #     } else {
-  #       # Regular tab item
-  #       if (is.null(selected)) {
-  #         # If selected tab isn't specified, mark first available item
-  #         # as selected.
-  #         foundSelectedItem_aTag <<- TRUE
-  #         liTag <- markSelected(liTag)
-  #       }
-  #     }
-  #
-  #     return(liTag)
-  #   })
-  # }
-
   # Append an optional icon to an aTag
   appendIcon <- function(aTag, iconClass) {
     if (!is.null(iconClass)) {
@@ -881,7 +854,6 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         }
 
         tabId <<- tabId + 1
-
         divTag$attribs$role <- "tabpanel"
 
         # append optional icon

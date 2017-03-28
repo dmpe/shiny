@@ -120,7 +120,7 @@ updates in response to an event. This is just like a normal
 invalidations that come from its reactive dependencies; it only invalidates
 in response to the given event.
 }
-\section{ignoreNULL and ignoreInit}{
+\section{\code{ignoreNULL} and \code{ignoreInit}}{
 
 
 Both \code{observeEvent} and \code{eventReactive} take an \code{ignoreNULL}
