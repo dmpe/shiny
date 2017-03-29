@@ -1,4 +1,4 @@
-library(shinyV4)
+library(shiny)
 library(datasets)
 
 # We tweak the "am" field to have nicer factor labels. Since

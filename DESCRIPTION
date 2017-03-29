@@ -1,4 +1,4 @@
-Package: shinyV4
+Package: shiny
 Type: Package
 Title: Web Application Framework for R
 Version: 1.0.1

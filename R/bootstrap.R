@@ -57,7 +57,7 @@ bootstrapLib <- function(theme = NULL) {
   htmlDependency("bootstrap", "4.0.0",
     c(
       href = "shared/bootstrap",
-      file = system.file("www/shared/bootstrap", package = "shinyV4")
+      file = system.file("www/shared/bootstrap", package = "shiny")
     ),
     script = c(
       "js/tether.min.js",
@@ -166,7 +166,7 @@ fillPage <- function(..., padding = 0, title = NULL, bootstrap = TRUE,
 
 collapseSizes <- function(padding) {
   paste(
-    sapply(padding, shinyV4::validateCssUnit, USE.NAMES = FALSE),
+    sapply(padding, shiny::validateCssUnit, USE.NAMES = FALSE),
     collapse = " ")
 }
 

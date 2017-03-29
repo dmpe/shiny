@@ -540,7 +540,7 @@ renderDataTable <- function(expr, options = NULL, searchDelay = 500,
 DT10Names <- function() {
   rbind(
     utils::read.table(
-      system.file('www/shared/datatables/upgrade1.10.txt', package = 'shinyV4'),
+      system.file('www/shared/datatables/upgrade1.10.txt', package = 'shiny'),
       stringsAsFactors = FALSE
     ),
     c('aoColumns', 'Removed')  # looks like an omission on the upgrade guide

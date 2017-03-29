@@ -1,4 +1,4 @@
-library(shinyV4)
+library(shiny)
 
 # Define server logic for random distribution application
 function(input, output) {

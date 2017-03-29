@@ -1,4 +1,4 @@
-library(shinyV4)
+library(shiny)
 
 # Define UI for application that draws a histogram
 fluidPage(

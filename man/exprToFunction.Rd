@@ -30,7 +30,7 @@ If expr was a non-quoted expression from two calls back, then this will
 # This is something that toolkit authors will do
 renderTriple <- function(expr, env=parent.frame(), quoted=FALSE) {
   # Convert expr to a function
-  func <- shinyV4::exprToFunction(expr, env, quoted)
+  func <- shiny::exprToFunction(expr, env, quoted)
 
   function() {
     value <- func()

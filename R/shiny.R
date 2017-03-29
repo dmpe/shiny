@@ -14,8 +14,8 @@ NULL
 #'
 #' @seealso \link{shiny-options} for documentation about global options.
 #'
-#' @name shinyV4-package
-#' @aliases shinyV4
+#' @name shiny-package
+#' @aliases shiny
 #' @docType package
 #' @import htmltools httpuv xtable digest R6 mime
 NULL
@@ -24,7 +24,7 @@ NULL
 # to import(methods) in NAMESPACE so R CMD check doesn't complain. This
 # approach isn't foolproof because Rscript -e pkgname::func() doesn't actually
 # cause methods to be attached, but it's not a problem for shiny::runApp()
-# since we call require(shinyV4) as part of loading the app.
+# since we call require(shiny) as part of loading the app.
 #' @import methods
 NULL
 

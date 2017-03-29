@@ -91,20 +91,20 @@ test_that("shiny.error", {
   on.exit(options(op))
 
   # Regular errors should be intercepted by shiny.error
-  try(shinyV4:::shinyCallingHandlers(stop("boom")), silent = TRUE)
+  try(shiny:::shinyCallingHandlers(stop("boom")), silent = TRUE)
   expect_true(caught)
 
   caught <- NULL
 
   # Validation errors shouldn't be intercepted by shiny.error
 
-  try(shinyV4:::shinyCallingHandlers(validate(need(NULL, FALSE))), silent = TRUE)
+  try(shiny:::shinyCallingHandlers(validate(need(NULL, FALSE))), silent = TRUE)
   expect_null(caught)
 
   er <- eventReactive(NULL, { "Hello" })
-  try(shinyV4:::shinyCallingHandlers(isolate(er())), silent = TRUE)
+  try(shiny:::shinyCallingHandlers(isolate(er())), silent = TRUE)
   expect_null(caught)
-  try(shinyV4:::shinyCallingHandlers(isolate(er())), silent = TRUE)
+  try(shiny:::shinyCallingHandlers(isolate(er())), silent = TRUE)
   expect_null(caught)
 })
 
@@ -118,7 +118,7 @@ test_that("validation error logging", {
   captureErrorLog <- function(expr) {
     tryCatch(
       tryCatch(
-        shinyV4::withLogErrors(expr),
+        shiny::withLogErrors(expr),
         warning = function(cond) {
           caught <<- cond
         }

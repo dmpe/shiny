@@ -1,4 +1,4 @@
-library(shinyV4)
+library(shiny)
 
 function(input, output) {
   output$contents <- renderTable({

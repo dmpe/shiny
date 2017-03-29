@@ -1,4 +1,4 @@
-library(shinyV4)
+library(shiny)
 
 # Define UI for dataset viewer application
 fluidPage(

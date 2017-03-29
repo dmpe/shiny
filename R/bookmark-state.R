@@ -633,7 +633,7 @@ updateQueryString <- function(queryString, mode = c("replace", "push"),
 #' }
 #' @export
 bookmarkButton <- function(label = "Bookmark...",
-  icon = shinyV4::icon("link"),
+  icon = shiny::icon("link"),
   title = "Bookmark this application's state and get a URL for sharing.",
   ...,
   id = "._bookmark_")

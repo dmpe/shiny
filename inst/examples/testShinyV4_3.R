@@ -1,4 +1,4 @@
-library(shinyV4)
+library(shiny)
 library(datasets)
 
 # Define UI for dataset viewer application

@@ -9,12 +9,12 @@ runGadget(app, server = NULL, port = getOption("shiny.port"),
 }
 \arguments{
 \item{app}{Either a Shiny app object as created by
-\code{\link[=shinyV4]{shinyApp}} et al, or, a UI object.}
+\code{\link[=shiny]{shinyApp}} et al, or, a UI object.}
 
 \item{server}{Ignored if \code{app} is a Shiny app object; otherwise, passed
 along to \code{shinyApp} (i.e. \code{shinyApp(ui = app, server = server)}).}
 
-\item{port}{See \code{\link[=shinyV4]{runApp}}.}
+\item{port}{See \code{\link[=shiny]{runApp}}.}
 
 \item{viewer}{Specify where the gadget should be displayed--viewer pane,
 dialog window, or external browser--by passing in a call to one of the
@@ -34,7 +34,7 @@ if running in RStudio, defaults to viewing the app in the Viewer pane.
 }
 \examples{
 \dontrun{
-library(shinyV4)
+library(shiny)
 
 ui <- fillPage(...)
 

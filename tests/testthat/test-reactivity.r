@@ -705,7 +705,7 @@ test_that("Observer priorities are respected", {
 
 test_that("installExprFunction doesn't rely on name being `expr`", {
   justExecute <- function(anExpression, envirToUse = parent.frame(), isQuoted = FALSE) {
-    shinyV4:::installExprFunction(anExpression, "myFunc", envirToUse, quoted = isQuoted)
+    shiny:::installExprFunction(anExpression, "myFunc", envirToUse, quoted = isQuoted)
     myFunc()
   }
 

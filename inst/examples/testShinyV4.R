@@ -1,4 +1,4 @@
-library(shinyV4)
+library(shiny)
 library(datasets)
 
 # Define server logic required to summarize and view the selected
@@ -56,4 +56,4 @@ ui <- fluidPage(
   )
 )
 
-shinyV4::shinyApp(ui, ser)
+shiny::shinyApp(ui, ser)

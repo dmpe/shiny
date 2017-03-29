@@ -53,7 +53,7 @@
 #'     }
 #'   )
 #'
-#'   shinyAppDir(system.file("examples/01_hello", package="shinyV4"))
+#'   shinyAppDir(system.file("examples/01_hello", package="shiny"))
 #'
 #'
 #'   # The object can be passed to runApp()
@@ -170,7 +170,7 @@ shinyAppDir_serverR <- function(appDir, options=list()) {
   }
 
   wwwDir <- file.path.ci(appDir, "www")
-  fallbackWWWDir <- system.file("www-dir", package = "shinyV4")
+  fallbackWWWDir <- system.file("www-dir", package = "shiny")
   serverSource <- cachedFuncWithFile(appDir, "server.R", case.sensitive = FALSE,
     function(serverR) {
       # If server.R contains a call to shinyServer (which sets .globals$server),
@@ -309,7 +309,7 @@ shinyAppDir_appR <- function(fileName, appDir, options=list())
   }
 
   wwwDir <- file.path.ci(appDir, "www")
-  fallbackWWWDir <- system.file("www-dir", package = "shinyV4")
+  fallbackWWWDir <- system.file("www-dir", package = "shiny")
 
   oldwd <- NULL
   monitorHandle <- NULL

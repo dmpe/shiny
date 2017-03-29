@@ -1,4 +1,4 @@
-library(shinyV4)
+library(shiny)
 library(datasets)
 
 # Define server logic required to summarize and view the selected

@@ -1,4 +1,4 @@
-library(shinyV4)
+library(shiny)
 
 tagList(
   p("Chinese: 中文"),

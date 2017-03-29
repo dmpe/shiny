@@ -40,6 +40,6 @@ if (interactive()) {
   runExample("01_hello")
 
   # Print the directory containing the code for all examples
-  system.file("examples", package="shinyV4")
+  system.file("examples", package="shiny")
 }
 }

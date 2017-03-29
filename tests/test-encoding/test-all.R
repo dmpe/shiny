@@ -1,7 +1,7 @@
 # Assume the working dir is the root dir of the shiny source package, and the
 # shiny-examples repo (https://github.com/rstudio/shiny-examples) is under the
 # same dir as the shiny package
-library(shinyV4)
+library(shiny)
 
 
 # Get the current locale settings in a named vector. According to
@@ -50,7 +50,7 @@ for (app in apps) {
     withLocale(locale, {
       cat("Running app: ", app, "\n")
       cat("Locale: ", Sys.setlocale(locale = locale))
-      tryCatch(shinyV4::runApp(app), interrupt = function(e) {})
+      tryCatch(shiny::runApp(app), interrupt = function(e) {})
     })
   }
 }
