@@ -81,9 +81,9 @@ appMetadata <- function(desc) {
 navTabsHelper <- function(files, prefix = "") {
   lapply(files, function(file) {
     with(tags,
-      li(class=if (tolower(file) %in% c("app.r", "server.r")) "nav nav-item" else "",
+      li(class=if (tolower(file) %in% c("app.r", "server.r")) "nav-item" else "",
          a(href=paste("#", gsub(".", "_", file, fixed=TRUE), "_code", sep=""),
-           "data-toggle"="tab", paste0(prefix, file)))
+           class = "nav-link", "data-toggle"="tab", paste0(prefix, file)))
     )
   })
 }
@@ -91,12 +91,12 @@ navTabsHelper <- function(files, prefix = "") {
 navTabsDropdown <- function(files) {
   if (length(files) > 0) {
     with(tags,
-      li(role="presentation", class="dropdown",
-        a(class="dropdown-toggle", `data-toggle`="dropdown", href="#",
+      li(role="presentation", class="nav-item dropdown",
+        a(class="nav-link dropdown-toggle", `data-toggle`="dropdown", href="#",
           role="button", `aria-haspopup`="true", `aria-expanded`="false",
           "www", span(class="caret")
-        ),
-        ul(class="dropdown-menu", navTabsHelper(files))
+        ), # zde dodelat
+        div(class="dropdown-menu", navTabsHelper(files))
       )
     )
   }
