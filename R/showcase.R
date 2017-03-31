@@ -95,11 +95,22 @@ navTabsDropdown <- function(files) {
         a(class="nav-link dropdown-toggle", `data-toggle`="dropdown", href="#",
           role="button", `aria-haspopup`="true", `aria-expanded`="false",
           "www", span(class="caret")
-        ), # zde dodelat
-        div(class="dropdown-menu", navTabsHelper(files))
+        ),
+        div(class="dropdown-menu", navTabsHelperDropdown(files))
       )
     )
   }
+}
+
+
+navTabsHelperDropdown <- function(files, prefix = "") {
+  lapply(files, function(file) {
+    with(tags,
+         li(class = if (tolower(file) %in% c("app.r", "server.r"))
+           "dropdown-item"
+           else
+             ""))
+  })
 }
 
 tabContentHelper <- function(files, path, language) {
