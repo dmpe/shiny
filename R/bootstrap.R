@@ -847,7 +847,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
                          `data-toggle` = "tab",
                          `data-value` = tabValue, `role` = "tab")
         } else {
-        # create the a tag
+          # create all other a's without being active ones
           aTag <- tags$a(href=paste("#", thisId, sep=""), class = "nav-link",
                        `data-toggle` = "tab",
                        `data-value` = tabValue, `role` = "tab")
@@ -1242,8 +1242,7 @@ imageOutput <- function(outputId, width = "100%", height="400px",
 #' @export
 plotOutput <- function(outputId, width = "100%", height="400px",
                        click = NULL, dblclick = NULL,
-                       hover = NULL,
-                       brush = NULL,
+                       hover = NULL, brush = NULL,
                        inline = FALSE) {
 
   # Result is the same as imageOutput, except for HTML class
