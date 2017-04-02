@@ -1,15 +1,17 @@
 #showcase-card {
   border-radius: 0;
+  padding-top: 19px; /* to restore a bit behaviour of v3 */
+  padding-bottom: 19px;
 }
 
 .shiny-code {
   background-color: white;
 }
-
+/*
 .shiny-code code {
   font-family: Menlo, Consolas, "Courier New", monospace;
 }
-
+*/
 .shiny-code-container {
   margin-top: 20px;
   clear: both;
