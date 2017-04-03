@@ -79,13 +79,25 @@ appMetadata <- function(desc) {
 }
 
 navTabsHelper <- function(files, prefix = "") {
-  lapply(files, function(file) {
+  returnCode <- lapply(files, function(file) {
     with(tags,
-      li(class=if (tolower(file) %in% c("app.r", "server.r", "ui.r")) "nav-item" else "",
-        a(href=paste("#", gsub(".", "_", file, fixed=TRUE), "_code", sep=""),
-           class = "nav-link", "data-toggle"="tab", paste0(prefix, file)))
+         li(class=if (tolower(file) %in% c("app.r", "server.r", "ui.r")) "nav-item active" else "",
+            a(href=paste("#", gsub(".", "_", file, fixed=TRUE), "_code", sep=""),
+              class = "nav-link", "data-toggle"="tab", paste0(prefix, file)))
     )
   })
+
+  i <- 0
+  for (i in length(returnCode)) {
+    returnCode <- gsub("nav-item active", "nav-item", returnCode[[1]], fixed=TRUE)
+  }
+
+
+  returnCodeWa <- rapply(returnCode, function(li) {
+    gsub("nav-item active", "nav-item", li[2:length(returnCode)], fixed=TRUE)
+  }, how = "replace")
+
+  returnCodeWa
 }
 
 navTabsDropdown <- function(files) {
@@ -106,7 +118,7 @@ navTabsDropdown <- function(files) {
 navTabsHelperDropdown <- function(files, prefix = "") {
   lapply(files, function(file) {
     with(tags,
-         li(class = if (tolower(file) %in% c("app.r", "server.r"))
+         li(class = if (tolower(file) %in% c("app.r", "server.r", "ui.r"))
            "dropdown-item"
            else
              ""))
