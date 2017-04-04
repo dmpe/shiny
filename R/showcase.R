@@ -94,10 +94,9 @@ navTabsHelper <- function(files, prefix = "") {
   # }, how = "replace")
 
   for (i in 2:length(returnCode)) {
-    gsub("nav-item active", "nav-item", returnCode[[i]]$attribs, fixed=TRUE)
+    returnCode[[i]]$attribs$class <- gsub("nav-item active", "nav-item", returnCode[[i]]$attribs$class)
   }
-
-  returnCode
+  return(returnCode)
 }
 
 navTabsDropdown <- function(files) {
