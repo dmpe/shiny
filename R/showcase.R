@@ -88,13 +88,16 @@ navTabsHelper <- function(files, prefix = "") {
   })
 
   i <- 0
-  for (i in length(returnCode)) {
-    returnCode <- gsub("nav-item active", "nav-item", returnCode[[1]], fixed=TRUE)
+  for (i in 2:length(returnCode)) {
+    returnCodeWa <- gsub("nav-item active", "nav-item", returnCode[[1]], fixed=TRUE)
   }
 
-
+  # http://stackoverflow.com/questions/5752829/regular-expression-for-exact-match-of-a-word
   returnCodeWa <- rapply(returnCode, function(li) {
-    gsub("nav-item active", "nav-item", li[2:length(returnCode)], fixed=TRUE)
+
+      gsub("nav-item active", "nav-item", li[2:length(returnCode)], fixed=TRUE)
+
+
   }, how = "replace")
 
   returnCodeWa
