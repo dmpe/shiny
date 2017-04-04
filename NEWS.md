@@ -1,4 +1,4 @@
-shiny 1.0.1
+shiny 1.0.2
 ================
 
 ## Full changelog
@@ -6,7 +6,7 @@ shiny 1.0.1
 ### Breaking changes
 -Upgraded Bootstrap library to v4.
 
-shiny 1.0.0.9001
+shiny 1.0.1
 ================
 
 This is a maintenance release of Shiny, mostly aimed at fixing bugs and introducing minor features. The most notable additions in this version of Shiny are the introduction of the `reactiveVal()` function (it's like `reactiveValues()`, but it only stores a single value), and that the choices of `radioButtons()` and `checkboxGroupInput()` can now contain HTML content instead of just plain text.
@@ -47,6 +47,10 @@ in shiny apps. For more info, see the documentation (`?updateQueryString` and `?
 * Fixed [#1577](https://github.com/rstudio/shiny/issues/1577): Improved `escapeHTML` (util.js) in terms of the order dependency of replacing, XSS risk attack and performance. ([#1579](https://github.com/rstudio/shiny/pull/1579))
 
 * The `shiny:inputchanged` JavaScript event now includes two new fields, `binding` and `el`, which contain the input binding and DOM element, respectively. Additionally, `Shiny.onInputChange()` now accepts an optional argument, `opts`, which can contain the same fields. ([#1596](https://github.com/rstudio/shiny/pull/1596))
+
+* The `NS()` function now returns a vectorized function. ([#1613](https://github.com/rstudio/shiny/pull/1613))
+
+* Fixed [#1617](https://github.com/rstudio/shiny/issues/1617): `fileInput` can have customized text for the button and the placeholder. ([#1619](https://github.com/rstudio/shiny/pull/1619))
 
 ### Bug fixes
 
