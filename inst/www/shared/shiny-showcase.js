@@ -219,7 +219,12 @@
         width: appWidth + "px",
         zoom: (zoom*100) + "%"
       }, animate ? animateMs : 0);
+      console.log(appWidth);
+      console.log(zoom);
+      console.log(totalWidth);
   };
+
+  console.log(setAppCodeSxsWidths);
 
   var toggleCodePosition = function() {
     setCodePosition(!isCodeAbove, true);
