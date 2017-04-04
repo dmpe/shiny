@@ -81,9 +81,9 @@ appMetadata <- function(desc) {
 navTabsHelper <- function(files, prefix = "") {
   returnCode <- lapply(files, function(file) {
     with(tags,
-         li(class=if (tolower(file) %in% c("app.r", "server.r", "ui.r")) "nav-item active" else "",
+         li(class=if (tolower(file) %in% c("app.r", "server.r", "ui.r")) "nav-item" else "",
             a(href=paste("#", gsub(".", "_", file, fixed=TRUE), "_code", sep=""),
-              class = "nav-link", "data-toggle"="tab", paste0(prefix, file)))
+              class = "nav-link active", "data-toggle"="tab", paste0(prefix, file)))
     )
   })
 
@@ -94,8 +94,11 @@ navTabsHelper <- function(files, prefix = "") {
   # }, how = "replace")
 
   for (i in 2:length(returnCode)) {
-    returnCode[[i]]$attribs$class <- gsub("nav-item active", "nav-item", returnCode[[i]]$attribs$class)
+    #print(returnCode[[i]]$children[[i]]$attribs$class)
+    returnCode[[i]]$children[[1]]$attribs$class <- gsub("nav-link active", "nav-link", returnCode[[i]]$children[[1]]$attribs$class, fixed = T)
+    #print(returnCode[[i]]$children[[i]]$attribs$class)
   }
+
   return(returnCode)
 }
 
