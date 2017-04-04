@@ -87,20 +87,17 @@ navTabsHelper <- function(files, prefix = "") {
     )
   })
 
-  i <- 0
+  # https://regex101.com/r/VWtP4H/1/
+  # http://stackoverflow.com/questions/5752829/regular-expression-for-exact-match-of-a-word
+  # returnCodeWa <- rapply(returnCode, function(li) {
+  #     gsub("nav-item active", "nav-item", li[2:length(returnCode)], fixed=TRUE)
+  # }, how = "replace")
+
   for (i in 2:length(returnCode)) {
-    returnCodeWa <- gsub("nav-item active", "nav-item", returnCode[[1]], fixed=TRUE)
+    gsub("nav-item active", "nav-item", returnCode[[i]]$attribs, fixed=TRUE)
   }
 
-  # http://stackoverflow.com/questions/5752829/regular-expression-for-exact-match-of-a-word
-  returnCodeWa <- rapply(returnCode, function(li) {
-
-      gsub("nav-item active", "nav-item", li[2:length(returnCode)], fixed=TRUE)
-
-
-  }, how = "replace")
-
-  returnCodeWa
+  returnCode
 }
 
 navTabsDropdown <- function(files) {
