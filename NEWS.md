@@ -1,10 +1,25 @@
 shiny 1.0.2
-================
+=======
 
 ## Full changelog
 
 ### Breaking changes
 -Upgraded Bootstrap library to v4.
+
+
+
+shiny 1.0.1.9000
+================
+
+### New features
+### Minor new features and improvements
+
+* Fixed [#1649](https://github.com/rstudio/shiny/issues/1649): allow the `choices` argument in `checkboxGroupInput()` to be `NULL` (or `c()`) to keep backward compatibility with Shiny < 1.0.1. This will result in the same thing as providing `choices = character(0)`. ([#1652](https://github.com/rstudio/shiny/pull/1652))
+
+### Bug fixes
+### Library updates
+
+>>>>>>> dae1176... allow the `choices` argument in `checkboxGroupInput()` to be `NULL` (#1652)
 
 shiny 1.0.1
 ================
