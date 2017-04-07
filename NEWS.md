@@ -22,7 +22,7 @@ shiny 1.0.1.9000
 
 ### Library updates
 
->>>>>>> dae1176... allow the `choices` argument in `checkboxGroupInput()` to be `NULL` (#1652)
+
 
 shiny 1.0.1
 ================
