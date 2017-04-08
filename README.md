@@ -37,12 +37,12 @@ To install the stable version from CRAN, simply run the following from an R cons
 install.packages("shiny")
 ```
 
-To install the latest development builds directly from GitHub, run this instead:
+To install the latest development builds directly from GitHub (this fork), run this instead:
 
 ```r
 if (!require("devtools"))
   install.packages("devtools")
-devtools::install_github("rstudio/shiny")
+devtools::install_github("dmpe/shiny", ref = "bootstrap4_changes")
 ```
 
 ## Getting Started
