@@ -4,11 +4,14 @@
 \alias{bootstrapLib}
 \title{Bootstrap libraries}
 \usage{
-bootstrapLib(theme = NULL)
+bootstrapLib(theme = NULL, browserLanguage = "en")
 }
 \arguments{
 \item{theme}{Alternative Bootstrap stylesheet (normally a css file within the
 www directory, e.g. \code{www/bootstrap.css})}
+
+\item{browserLanguage}{Tells Bootstrap to add a \code{<html lang="en">} code to website.
+Defaults to "en" - English.}
 }
 \description{
 This function returns a set of web dependencies necessary for using Bootstrap

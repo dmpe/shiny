@@ -50,10 +50,11 @@ bootstrapPage <- function(..., title = NULL, theme = NULL) {
 #' \code{\link{basicPage}}, \code{\link{fluidPage}}, \code{\link{fillPage}},
 #' \code{\link{pageWithSidebar}}, and \code{\link{navbarPage}}, because they
 #' already include the Bootstrap web dependencies.
-#'
+#' @param browserLanguage Tells Bootstrap to add a \code{<html lang="en">} code to website.
+#' Defaults to "en" - English.
 #' @inheritParams bootstrapPage
 #' @export
-bootstrapLib <- function(theme = NULL) {
+bootstrapLib <- function(theme = NULL, browserLanguage = "en") {
   htmlDependency("bootstrap", "4.0.0",
     c(
       href = "shared/bootstrap",
@@ -67,7 +68,7 @@ bootstrapLib <- function(theme = NULL) {
     meta = list(viewport = "width=device-width, initial-scale=1, shrink-to-fit=no"),
     # ugly terrific idea: bootstrap v4 responds to browser language for file uploading
     # thus add lang=en in order to display buttons & fields properly
-    HTML("<html lang='en'>")
+    HTML(paste0('<html lang="', browserLanguage, '">'))
   )
 
 }
