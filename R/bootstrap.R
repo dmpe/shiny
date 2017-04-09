@@ -64,8 +64,12 @@ bootstrapLib <- function(theme = NULL) {
       "js/bootstrap.min.js"
     ),
     stylesheet = if (is.null(theme)) "css/bootstrap.min.css",
-    meta = list(viewport = "width=device-width, initial-scale=1, shrink-to-fit=no")
+    meta = list(viewport = "width=device-width, initial-scale=1, shrink-to-fit=no"),
+    # ugly terrific idea: bootstrap v4 responds to browser language for file uploading
+    # thus add lang=en in order to display buttons & fields properly
+    HTML("<html lang='en'>")
   )
+
 }
 
 #' @rdname bootstrapPage

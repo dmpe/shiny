@@ -104,7 +104,7 @@ fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
     tags$label(class = "custom-file",
       tags$input(type = "file", class = "custom-file-input", id = "file",
        placeholder = "No file selected", readonly = "readonly"),
-      tags$span(class = "custom-file-control", "Browse...", inputTag)
+      tags$span(class = "custom-file-control", inputTag)
     ),
 
     tags$div(
