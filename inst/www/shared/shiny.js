@@ -78,6 +78,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }return str;
   }
 
+  // Round to a specified number of significant digits.
+  function roundSignif(x) {
+    var digits = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+    if (digits < 1) throw "Significant digits must be at least 1.";
+
+    // This converts to a string and back to a number, which is inelegant, but
+    // is less prone to FP rounding error than an alternate method which used
+    // Math.round().
+    return parseFloat(x.toPrecision(digits));
+  }
+
   // Take a string with format "YYYY-MM-DD" and return a Date object.
   // IE8 and QTWebKit don't support YYYY-MM-DD, but they support YYYY/MM/DD
   function parseDate(dateString) {
@@ -614,7 +626,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
   // Merge opts with defaults, and return a new object.
   function addDefaultInputOpts(opts) {
-    return $.extend({
+    return Object.assign({
       immediate: false,
       binding: null,
       el: null
@@ -2971,6 +2983,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       // For reversed scales, the min and max can be reversed, so use findBox
       // to ensure correct order.
       state.boundsData = coordmap.findBox(minData, maxData);
+      // Round to 14 significant digits to avoid spurious changes in FP values
+      // (#1634).
+      state.boundsData = mapValues(state.boundsData, function (val) {
+        return roundSignif(val, 14);
+      });
 
       // We also need to attach the data bounds and panel as data attributes, so
       // that if the image is re-sent, we can grab the data bounds to create a new
@@ -4799,15 +4816,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   //---------------------------------------------------------------------
   // Source file: ../srcjs/input_binding_fileinput.js
 
-  /*
-  var IE8FileUploader = function(shinyapp, id, fileEl) {
+
+  var IE8FileUploader = function IE8FileUploader(shinyapp, id, fileEl) {
     this.shinyapp = shinyapp;
     this.id = id;
     this.fileEl = fileEl;
     this.beginUpload();
   };
-  (function() {
-    this.beginUpload = function() {
+  (function () {
+    this.beginUpload = function () {
       var self = this;
       // Create invisible frame
       var iframeId = 'shinyupload_iframe_' + this.id;
@@ -4816,10 +4833,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       this.iframe.name = iframeId;
       this.iframe.setAttribute('style', 'position: fixed; top: 0; left: 0; width: 0; height: 0; border: none');
       $('body').append(this.iframe);
-      var iframeDestroy = function() {
+      var iframeDestroy = function iframeDestroy() {
         // Forces Shiny to flushReact, flush outputs, etc. Without this we get
         // invalidated reactives, but observers don't actually execute.
-        self.shinyapp.makeRequest('uploadieFinish', [], function(){}, function(){});
+        self.shinyapp.makeRequest('uploadieFinish', [], function () {}, function () {});
         $(self.iframe).remove();
       };
       if (this.iframe.attachEvent) {
@@ -4831,15 +4848,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       this.form = document.createElement('form');
       this.form.method = 'POST';
       this.form.setAttribute('enctype', 'multipart/form-data');
-      this.form.action = "session/" + encodeURI(this.shinyapp.config.sessionId) +
-                         "/uploadie/" + encodeURI(this.id);
+      this.form.action = "session/" + encodeURI(this.shinyapp.config.sessionId) + "/uploadie/" + encodeURI(this.id);
       this.form.id = 'shinyupload_form_' + this.id;
       this.form.target = iframeId;
       $(this.form).insertAfter(this.fileEl).append(this.fileEl);
       this.form.submit();
     };
   }).call(IE8FileUploader.prototype);
-  */
+
   var FileUploader = function FileUploader(shinyapp, id, files, el) {
     this.shinyapp = shinyapp;
     this.id = id;
@@ -4992,10 +5008,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     $el.removeAttr('data-restore');
 
     // Set the label in the text box
-    var $fileText = $el.closest('div.input-group').find('input[type=text]');
+    var $fileText = $el.closest('label.custom-file').find('input[type=file]');
     if (IE8) {
       // If we're using IE8/9, just use this placeholder
-      // $fileText.val("[Uploaded file]");
+      $fileText.val("[Uploaded file]");
     } else if (files.length === 1) {
       $fileText.val(files[0].name);
     } else {
@@ -5005,7 +5021,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     // Start the new upload and put the uploader in 'currentUploader'.
     if (IE8) {
       /*jshint nonew:false */
-      // new IE8FileUploader(exports.shinyapp, id, evt.target);
+      new IE8FileUploader(exports.shinyapp, id, evt.target);
     } else {
       $el.data('currentUploader', new FileUploader(exports.shinyapp, id, files, evt.target));
     }
@@ -5028,7 +5044,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         data = JSON.parse(data);
 
         // Set the label in the text box
-        var $fileText = $(el).closest('div.input-group').find('input[type=text]');
+        var $fileText = $(el).closest('label.custom-file').find('input[type=file]');
         if (data.name.length === 1) {
           $fileText.val(data.name[0]);
         } else {
