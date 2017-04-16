@@ -348,7 +348,7 @@ navbarPage <- function(title,
         ),
         span(class="navbar-brand", pageTitle)
       ),
-      div(class="navbar-collapse collapse", id=navId, tabset$navList)
+      div(class="collapse navbar-collapse ", id=navId, tabset$navList)
     )
   } else {
     containerDiv <- div(class="collapse navbar-collapse",
