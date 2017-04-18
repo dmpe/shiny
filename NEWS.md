@@ -1,8 +1,29 @@
-shiny 1.0.1.9000
+shiny 1.0.2.9000
 ================
 
+## Full changelog
+
+### Breaking changes
+
 ### New features
+
 ### Minor new features and improvements
+
+### Bug fixes
+
+### Library updates
+
+
+shiny 1.0.2
+================
+
+This is a hotfix release of Shiny. The primary reason for this release is because the web host for MathJax JavaScript library is scheduled to be shut down in the next few weeks. After it is shut down, Shiny applications that use MathJax will no longer be able to load the MathJax library if they are run with Shiny 1.0.1 and below. (If you don't know whether your application uses MathJax, it probably does not.) For more information about why the MathJax CDN is shutting down, see https://www.mathjax.org/cdn-shutting-down/.
+
+## Full changelog
+
+### Minor new features and improvements
+
+* Added a `shiny:sessioninitialized` Javascript event, which is fired at the end of the initialize method of the Session object. This allows us to listen for this event when we want to get the value of things like `Shiny.user`. ([#1568](https://github.com/rstudio/shiny/pull/1568))
 
 * Fixed [#1649](https://github.com/rstudio/shiny/issues/1649): allow the `choices` argument in `checkboxGroupInput()` to be `NULL` (or `c()`) to keep backward compatibility with Shiny < 1.0.1. This will result in the same thing as providing `choices = character(0)`. ([#1652](https://github.com/rstudio/shiny/pull/1652))
 
@@ -11,9 +32,6 @@ shiny 1.0.1.9000
 ### Bug fixes
 
 * Fixed [#1653](https://github.com/rstudio/shiny/issues/1653): wrong code example in documentation. ([#1658](https://github.com/rstudio/shiny/pull/1658))
-
-### Library updates
-
 
 
 shiny 1.0.1
@@ -117,7 +135,7 @@ Now there's an official way to slow down reactive values and expressions that in
 ### Minor new features and improvements
 
 * Addressed [#1486](https://github.com/rstudio/shiny/issues/1486) by adding a new argument to `observeEvent` and `eventReactive`, called `ignoreInit` (defaults to `FALSE` for backwards compatibility). When set to `TRUE`, the action (i.e. the second argument: `handlerExpr` and `valueExpr`, respectively) will not be triggered when the observer/reactive is first created/initialized. In other words, `ignoreInit = TRUE` ensures that the `observeEvent` (or `eventReactive`) is *never* run right away. For more info, see the documentation (`?observeEvent`). ([#1494](https://github.com/rstudio/shiny/pull/1494))
-
+    
 * Added a new argument to `observeEvent` called `once`. When set to `TRUE`, it results in the observer being destroyed (stop observing) after the first time that `handlerExpr` is run (i.e. `once = TRUE` guarantees that the observer only runs, at most, once). For more info, see the documentation (`?observeEvent`). ([#1494](https://github.com/rstudio/shiny/pull/1494))
 
 * Addressed [#1358](https://github.com/rstudio/shiny/issues/1358): more informative error message when calling `runApp()` inside of an app's app.R (or inside ui.R or server.R). ([#1482](https://github.com/rstudio/shiny/pull/1482))
@@ -516,7 +534,7 @@ shiny 0.12.1
 shiny 0.12.0
 ============
 
-In addition to the changes listed below (in the *Full Changelog* section), there is an infrastructure change that could affect existing Shiny apps.
+In addition to the changes listed below (in the *Full Changelog* section), there is an infrastructure change that could affect existing Shiny apps. 
 
 ### JSON serialization
 
@@ -607,13 +625,13 @@ Shiny 0.11 switches away from the Bootstrap 2 web framework to the next version,
 ### Known issues for migration
 
 *    In Bootstrap 3, images in `<img>` tags are no longer automatically scaled to the width of their container. If you use `img()` in your UI code, or `<img>` tags in your raw HTML source, it's possible that they will be too large in the new version of Shiny. To address this you can add the `img-responsive` class:
-
+    
     ```r
     img(src = "picture.png", class = "img-responsive")
     ```
-
+    
     The R code above will generate the following HTML:
-
+    
     ```html
     <img src="picture.png" class="img-responsive">
     ```
@@ -1112,7 +1130,7 @@ shiny 0.1.8
 
 * The server.R and ui.R filenames are now case insensitive.
 
-* Add `cardPanel` function for creating inset areas on the page.
+* Add `wellPanel` function for creating inset areas on the page.
 
 * Add `bootstrapPage` function for creating new Bootstrap based layouts from scratch.
 
@@ -1185,3 +1203,4 @@ shiny 0.1.2
 ===========
 
 * Initial private beta release!
+
