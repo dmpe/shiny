@@ -24,7 +24,7 @@ The migration guide from v3 is here: [https://v4-alpha.getbootstrap.com/migratio
 * Works in any R environment (Console R, Rgui for Windows or Mac, ESS, StatET, RStudio, etc.).
 * Attractive default UI theme based on [Bootstrap](http://getbootstrap.com/).
 * A highly customizable slider widget with built-in support for animation.
-* Pre-built output widgets for displaying plots, tables, and printed output of R objects.
+* Prebuilt output widgets for displaying plots, tables, and printed output of R objects.
 * Fast bidirectional communication between the web browser and R using the [httpuv](https://github.com/rstudio/httpuv) package.
 * Uses a [reactive](http://en.wikipedia.org/wiki/Reactive_programming) programming model that eliminates messy event handling code, so you can focus on the code that really matters.
 * Develop and redistribute your own Shiny widgets that other developers can easily drop into their own applications (coming soon!).
