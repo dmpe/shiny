@@ -315,12 +315,17 @@ navbarPage <- function(title,
   pageTitle <- title
 
   # navbar class based on options
-  navbarClass <- "navbar navbar-toggleable-md navbar-light"
+  navbarClass <- "navbar navbar-toggleable-md"
+
   position <- match.arg(position)
   if (!is.null(position))
     navbarClass <- paste(navbarClass, " ", position, sep = "")
-  if (inverse)
-    navbarClass <- paste(navbarClass, "navbar-inverse")
+
+  if (inverse) {
+    navbarClass <- paste(navbarClass, "navbar-inverse bg-inverse")
+  } else {
+    navbarClass <- paste(navbarClass, "navbar-light")
+  }
 
   if (!is.null(id))
     selected <- restoreInput(id = id, default = selected)
@@ -352,7 +357,7 @@ navbarPage <- function(title,
     )
   } else {
     containerDiv <- div(class="collapse navbar-collapse",
-      a(class="navbar-brand", pageTitle),
+      a(class="navbar-brand", pageTitle, href = "#"),
       tabset$navList
     )
   }
