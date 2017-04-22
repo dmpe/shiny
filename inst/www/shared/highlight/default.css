@@ -7,7 +7,8 @@ vs
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: white;
+  /* the only change in this file is the background where white is replaced with other color
+  background: white;*/
   color: black;
 }
 
