@@ -318,7 +318,6 @@ navbarPage <- function(title,
   # navbar class based on options
   navbarClass <- "navbar navbar-toggleable-md"
 
-  position <- match.arg(position)
   if (!is.null(position))
     navbarClass <- paste(navbarClass, " ", position, sep = "")
 
@@ -809,7 +808,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         aTag <- tags$a(href="#",
                        class="nav-link dropdown-toggle",
                        `data-toggle`="dropdown",
-                       `role` = "button")
+                       `role` = "button", `aria-expanded`="false")
 
         # add optional icon
         aTag <- appendIcon(aTag, divTag$iconClass)
@@ -818,7 +817,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         aTag <- tagAppendChild(aTag, divTag$title)
 
         # build the dropdown list element
-        liTag <- tags$li(class = "dropdown-item", aTag)
+        liTag <- tags$li(class = "nav-item dropdown", aTag)
 
         # text filter for separators
         textFilter <- function(text) {
@@ -834,7 +833,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
 
         # If this navbar menu contains a selected item, mark it as active
         if (containsSelected(divTag$tabs)) {
-          liTag$attribs$class <- paste(liTag$attribs$class, "nav-link active")
+          liTag$attribs$class <- paste(liTag$attribs$class, "dropdown-item active")
         }
 
         tabNavList <<- tagAppendChild(tabNavList, liTag)
