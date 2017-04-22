@@ -69,6 +69,7 @@ bootstrapLib <- function(theme = NULL, browserLanguage = "en") {
     # ugly terrific idea: bootstrap v4 responds to browser language for file uploading
     # thus add lang=en in order to display buttons & fields properly
     HTML(paste0('<html lang="', browserLanguage, '">'))
+    # repair after https://github.com/rstudio/htmltools/issues/82 is closed
   )
 
 }
