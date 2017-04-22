@@ -1,8 +1,5 @@
-This shiny fork
+NEWS file for this fork
 =======
 
-## Full changelog
-
 ### Breaking changes
--Upgraded Bootstrap to v4 and many other libraries as well. 
-
+-Upgraded Bootstrap to v4 and many other libraries as well.

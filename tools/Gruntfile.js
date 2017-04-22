@@ -193,7 +193,8 @@ module.exports = function(grunt) {
     'newer:concat',
     'newer:eslint',
     'configureBabel',
-    'newer:babel'
+    'newer:babel',
+    'newer:uglify'
   ]);
 
 
