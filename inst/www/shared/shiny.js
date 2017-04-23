@@ -4979,7 +4979,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       this.$container().css('visibility', visible ? 'visible' : 'hidden');
     };
     this.$setError = function (error) {
-      this.$bar().toggleClass('progress-bar-danger', error !== null);
+      this.$bar().toggleClass('bg-danger', error !== null);
       if (error !== null) {
         this.onProgress(null, 1);
         this.$bar().text(error);
@@ -5007,8 +5007,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     // Clear data-restore attribute if present.
     $el.removeAttr('data-restore');
 
-    // Set the label in the text box
-    var $fileText = $el.closest('label.custom-file').find('input[type=file]');
+    // Set the label in the text box - dodelat
+    var $fileText = $el.closest('span.custom-file-input').find('input[type=file]');
     if (IE8) {
       // If we're using IE8/9, just use this placeholder
       $fileText.val("[Uploaded file]");
@@ -5055,7 +5055,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         // code from FileUploader, but duplication is less bad than alternatives.
         var $progress = $(el).closest('div.form-group').find('.progress');
         var $bar = $progress.find('.progress-bar');
-        $progress.removeClass('active');
+        // $progress.removeClass('active');
         $bar.width('100%');
         $bar.css('visibility', 'visible');
 

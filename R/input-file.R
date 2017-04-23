@@ -26,6 +26,7 @@
 #'   multiple files at once.
 #' @param accept A character vector of MIME types; gives the browser a hint of
 #'   what kind of files the server is expecting.
+#' @param placeholder The text to show before a file has been uploaded.
 #'
 #' @examples
 #' ## Only run examples in interactive R sessions
@@ -69,7 +70,7 @@
 #' }
 #' @export
 fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
-  width = NULL) {
+                      width = NULL, placeholder = "No file selected") {
 
   restoredValue <- restoreInput(id = inputId, default = NULL)
 
@@ -103,13 +104,13 @@ fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
 
     tags$label(class = "custom-file",
       tags$input(type = "file", class = "custom-file-input", id = "file",
-       placeholder = "No file selected", readonly = "readonly"),
+       placeholder = placeholder, readonly = "readonly"),
       tags$span(class = "custom-file-control", inputTag)
     ),
 
     tags$div(
       id=paste(inputId, "_progress", sep=""),
-      class="progress active shiny-file-input-progress",
+      class="progress shiny-file-input-progress",
       tags$div(class="progress-bar progress-bar-striped", role="progressbar")
     )
   )
