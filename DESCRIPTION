@@ -97,6 +97,7 @@ Collate:
     'cache.R'
     'diagnose.R'
     'fileupload.R'
+    'icons.R'
     'graph.R'
     'reactives.R'
     'reactive-domains.R'
