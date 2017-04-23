@@ -817,6 +817,9 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
           aTagDT$attribs$class <- paste(aTagDT$attribs$class, "dropdown-item active")
         }
 
+        # build the dropdown list elements
+        liTag <- tags$li(class = "nav-item dropdown", aTagDT)
+
         # text filter for separators
         textFilter <- function(text) {
           if (grepl("^\\-+$", text)) {
@@ -826,21 +829,14 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
           }
         }
 
-        # build the child tabset
+        # build the child tabsetDropdownMenu
         tabsetDropdownMenu <- build(divTag$tabs, "dropdown-menu", textFilter)
-
-        # build the dropdown list elements
-        liTag <- tags$li(class = "nav-item dropdown", aTagDT)
-        #liTag <- tagAppendChild(liTag, tabsetDropdownMenu$navList)
-
-        #liTagDropDown <- tagAppendChild(liTag, tabsetDropdownMenu)
-        #print(liTagDropDown)
+        liTag <- tagAppendChild(liTag, tabset$navList)
 
         tabNavList <<- tagAppendChild(tabNavList, liTag)
-               # don't add a standard tab content div, rather add the list of tab
-               # content divs that are contained within the tabset
-               tabContent <<- tagAppendChildren(tabContent,
-       list = tabset$content$children)
+        # don't add a standard tab content div, rather add the list of tab
+        # content divs that are contained within the tabsetDropdownMenu
+        tabContent <<- tagAppendChildren(tabContent, list = tabsetDropdownMenu$content$children)
 
       } else {
         # Standard navbar item
