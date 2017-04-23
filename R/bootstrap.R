@@ -1403,7 +1403,7 @@ uiOutput <- htmlOutput
 #' @seealso \code{\link{downloadHandler}}
 #' @export
 downloadButton <- function(outputId,
-                           label="Download", buttonStyle = "btn-secondary"
+                           label="Download", buttonStyle = "btn-secondary",
                            class=NULL, ...) {
 
   aTag <- tags$a(id=outputId,

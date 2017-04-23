@@ -83,7 +83,7 @@ Suggests:
     magrittr
 URL: http://shiny.rstudio.com
 BugReports: https://github.com/rstudio/shiny/issues
-Collate:
+Collate: 
     'app.R'
     'bookmark-state-local.R'
     'stack.R'
@@ -97,7 +97,6 @@ Collate:
     'cache.R'
     'diagnose.R'
     'fileupload.R'
-    'icons.R'
     'graph.R'
     'reactives.R'
     'reactive-domains.R'
@@ -105,6 +104,7 @@ Collate:
     'hooks.R'
     'html-deps.R'
     'htmltools.R'
+    'icons.R'
     'image-interact-opts.R'
     'image-interact.R'
     'imageutils.R'

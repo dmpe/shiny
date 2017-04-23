@@ -6,15 +6,20 @@
 \alias{downloadLink}
 \title{Create a download button or link}
 \usage{
-downloadButton(outputId, label = "Download", class = NULL, ...)
+downloadButton(outputId, label = "Download", buttonStyle = "btn-secondary",
+  class = NULL, ...)
 
-downloadLink(outputId, label = "Download", class = NULL, ...)
+downloadLink(outputId, label = "Download", buttonStyle = "btn-secondary",
+  class = NULL, ...)
 }
 \arguments{
 \item{outputId}{The name of the output slot that the \code{downloadHandler}
 is assigned to.}
 
 \item{label}{The label that should appear on the button.}
+
+\item{buttonStyle}{Defaults to secondary button style as defined in
+\url{https://v4-alpha.getbootstrap.com/components/buttons/#examples}}
 
 \item{class}{Additional CSS classes to apply to the tag, if any.}
 
