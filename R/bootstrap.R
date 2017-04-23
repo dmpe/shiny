@@ -777,8 +777,10 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
     aTag
   }
 
+  aTagForDropDownMenu <- FALSE
+
   # Build the tabset (all others)
-  build <- function(tabs, ulClass, textFilter = NULL, id = NULL) {
+  build <- function(tabs, ulClass, textFilter = NULL, id = NULL, aTagForDropDownMenu = FALSE) {
     # add tab input sentinel class if we have an id
     if (!is.null(id))
       ulClass <- paste(ulClass, "shiny-tab-input")
@@ -791,8 +793,6 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
     }
 
     tabNavList <- tags$ul(class = ulClass, id = id)
-    tabNavListDropDownMenu <- tags$div(class = ulClass, id = id)
-
     tabContent <- tags$div(class = "tab-content")
     tabsetId <- p_randomInt(1000, 10000)
     tabId <- 1
@@ -832,14 +832,14 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         #}
 
         # build the child tabsetDropdownMenu
-        tabsetDropdownMenu <- build(divTag$tabs, "dropdown-menu", textFilter)
+        tabsetDropdownMenu <- build(divTag$tabs, "dropdown-menu", textFilter, aTagForDropDownMenu = T)
         liTag <- tagAppendChild(liTag, tabsetDropdownMenu$navList)
 
         #liTagasdasd <<- liTag
         liTag$children[[2]]$name <- "div"
         liTag <- gsub('<li class="nav-item">', "", liTag)
         liTag <- gsub('</li>', "", liTag)
-        liTag <- gsub('nav-link', "dropdown-item", liTag, fixed = T)
+        #liTag <- gsub('nav-link', "dropdown-item", liTag, fixed = T)
         HTML(liTag)
 
 
@@ -855,16 +855,24 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         divTag$attribs$id <- thisId
         tabValue <- divTag$attribs$`data-value`
 
-        if (tabId == 1) {
-          # if it is the first one, then make it active by default
-          aTag <- tags$a(href=paste("#", thisId, sep=""), class = "nav-link active",
+        if (!aTagForDropDownMenu) {
+          # if false
+          if (tabId == 1) {
+            # if it is the first one, then make it active by default
+            aTag <- tags$a(href=paste("#", thisId, sep=""), class = "nav-link active",
+                           `data-toggle` = "tab",
+                           `data-value` = tabValue, `role` = "tab")
+          } else {
+            # create all other a's without being active ones
+            aTag <- tags$a(href=paste("#", thisId, sep=""), class = "nav-link",
                          `data-toggle` = "tab",
                          `data-value` = tabValue, `role` = "tab")
+          }
         } else {
-          # create all other a's without being active ones
-          aTag <- tags$a(href=paste("#", thisId, sep=""), class = "nav-link",
-                       `data-toggle` = "tab",
-                       `data-value` = tabValue, `role` = "tab")
+          # if TRUE
+            aTag <- tags$a(href=paste("#", thisId, sep=""), class = "dropdown-item",
+                           `data-toggle` = "tab",
+                           `data-value` = tabValue, `role` = "tab")
         }
 
         tabId <<- tabId + 1
