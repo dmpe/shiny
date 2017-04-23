@@ -777,7 +777,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
     aTag
   }
 
-  # Build the tabset
+  # Build the tabset (all others)
   build <- function(tabs, ulClass, textFilter = NULL, id = NULL) {
     # add tab input sentinel class if we have an id
     if (!is.null(id))
@@ -804,43 +804,57 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
 
       } else if (inherits(divTag, "shiny.navbarmenu")) {
 
-        # create the a tag
-        aTag <- tags$a(href="#",
-                       class="nav-link dropdown-toggle",
-                       `data-toggle`="dropdown",
-                       `role` = "button", `aria-expanded`="false")
+        thisId <- paste("dropdown-tab", tabsetId, tabId, sep="-")
+        divTag$attribs$id <- thisId
+        tabValue <- divTag$attribs$`data-value`
 
-        # add optional icon
-        aTag <- appendIcon(aTag, divTag$iconClass)
+        # create all other a's without being active ones
+        aTag <- tags$a(href=paste("#", thisId, sep=""), class = "dropdown-item",
+                       `data-toggle` = "dropdown-tab",
+                       `data-value` = tabValue, `role` = "dropdown-tab")
+
+        tabId <<- tabId + 1
+
+        # append optional icon
+        aTag <- appendIcon(aTag, divTag$attribs$`data-icon-class`)
 
         # add the title
         aTag <- tagAppendChild(aTag, divTag$title)
 
-        # build the dropdown list element
-        liTag <- tags$li(class = "nav-item dropdown", aTag)
+        # If this navbar menu contains a selected item, mark it as active
+        if (containsSelected(divTag$tabs)) {
+          aTag$attribs$class <- paste(aTag$attribs$class, "dropdown-item active")
+        }
+
+        # create the a tag
+        aTagDT <- tags$a(href="#",
+                         class="nav-link dropdown-toggle",
+                         `data-toggle`="dropdown", `aria-haspopup`= "true",
+                         `role` = "button", `aria-expanded`="false")
+        aTagDT <- appendIcon(aTagDT, divTag$iconClass)
+        aTagDT <- tagAppendChild(aTagDT, divTag$title)
 
         # text filter for separators
         textFilter <- function(text) {
           if (grepl("^\\-+$", text))
-            tags$li(class="dropdown-divider")
+            tags$div(class="dropdown-divider")
           else
-            tags$li(class="dropdown-header", text)
+            tags$h6(class="dropdown-header", text)
         }
-
         # build the child tabset
-        tabset <- build(divTag$tabs, "dropdown-menu", textFilter)
-        liTag <- tagAppendChild(liTag, tabset$navList)
+        tabsetDropdownMenu <- build(divTag$tabs, "dropdown-menu", textFilter)
+        liTag <- tagAppendChild(liTag, tabsetDropdownMenu$navList)
 
-        # If this navbar menu contains a selected item, mark it as active
-        if (containsSelected(divTag$tabs)) {
-          liTag$attribs$class <- paste(liTag$attribs$class, "dropdown-item active")
-        }
+        # build the dropdown list elements
+        liTag <- tags$li(class = "nav-item dropdown", aTagDT)
 
-        tabNavList <<- tagAppendChild(tabNavList, liTag)
-        # don't add a standard tab content div, rather add the list of tab
-        # content divs that are contained within the tabset
-        tabContent <<- tagAppendChildren(tabContent,
-                                        list = tabset$content$children)
+        liTagDropDown <- tagAppendChild(liTag, tabsetDropdownMenu)
+        #print(liTagDropDown)
+
+        tabNavList <<- tagAppendChild(tabNavList, liTagDropDown)
+        print(tabNavList)
+        tabContent <<- tagAppendChildren(tabContent, liTag$content$children)
+        print(tabContent)
 
       } else {
         # Standard navbar item
@@ -883,7 +897,10 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
 
         # append the elements to our lists
         tabNavList <<- tagAppendChild(tabNavList, liTag)
+        #print(tabNavList)
         tabContent <<- tagAppendChild(tabContent, divTag)
+        #print(tabContent)
+
       }
     }
 
@@ -1418,69 +1435,4 @@ downloadLink <- function(outputId, label="Download", class=NULL, ...) {
          target='_blank',
          download=NA,
          label, ...)
-}
-
-
-#' Create an icon
-#'
-#' Create an icon for use within a page. Icons can appear on their own, inside
-#' of a button, or as an icon for a \code{\link{tabPanel}} within a
-#' \code{\link{navbarPage}}.
-#'
-#' @param name Name of icon. Icons are drawn from the
-#'   \href{http://fontawesome.io/icons/}{Font Awesome} libraries.
-#'   Note that the "fa-" prefix should not be used
-#'   in icon names (i.e. the "fa-calendar" icon should be referred to as
-#'   "calendar")
-#' @param class Additional classes to customize the style of the icon (see the
-#'   \href{http://fontawesome.io/examples/}{usage examples} for details on
-#'   supported styles).
-#'
-#' @return An icon element
-#'
-#' @seealso For lists of available icons, see
-#'   \href{http://fontawesome.io/icons/}{http://fontawesome.io/icons/}
-#'
-#' @examples
-#' icon("calendar")               # standard icon
-#' icon("calendar", "fa-3x")      # 3x normal size
-#'
-#' # add an icon to a submit button
-#' submitButton("Update View", icon = icon("refresh"))
-#'
-#' navbarPage("App Title",
-#'   tabPanel("Plot", icon = icon("bar-chart-o")),
-#'   tabPanel("Summary", icon = icon("list-alt")),
-#'   tabPanel("Table", icon = icon("table"))
-#' )
-#' @export
-icon <- function(name, class = NULL) {
-  prefixes <- list(
-    "font-awesome" = "fa"
-  )
-  prefix <- prefixes[["font-awesome"]]
-
-
-  # build the icon class (allow name to be null so that other functions
-  # e.g. buildTabset can pass an explicit class value)
-  iconClass <- ""
-  if (!is.null(name))
-    iconClass <- paste0(prefix, " ", prefix, "-", name)
-  if (!is.null(class))
-    iconClass <- paste(iconClass, class)
-
-  iconTag <- tags$i(class = iconClass)
-
-  # font-awesome needs an additional dependency
-  htmlDependencies(iconTag) <- htmlDependency(
-      "font-awesome", "4.7.0", c(href="shared/font-awesome"),
-      stylesheet = "css/font-awesome.min.css"
-  )
-
-  iconTag
-}
-
-# Helper funtion to extract the class from an icon
-iconClass <- function(icon) {
-  if (!is.null(icon)) icon$attribs$class
 }
