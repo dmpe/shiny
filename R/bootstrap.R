@@ -790,15 +790,9 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
            paste(nms, collapse = ", "))
     }
 
-    if (inherits(divTag, "shiny.navbarmenu") {
-      tabNavList <- tags$div(class = ulClass, id = id)
-      print("works with div")
-    } else {
-      tabNavList <- tags$ul(class = ulClass, id = id)
-      print("works with ul")
-    }
-
     tabNavList <- tags$ul(class = ulClass, id = id)
+    tabNavListDropDownMenu <- tags$div(class = ulClass, id = id)
+
     tabContent <- tags$div(class = "tab-content")
     tabsetId <- p_randomInt(1000, 10000)
     tabId <- 1
@@ -820,11 +814,6 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         aTagDT <- appendIcon(aTagDT, divTag$iconClass)
         aTagDT <- tagAppendChild(aTagDT, divTag$title)
 
-        # If this navbar menu contains a selected item, mark it as active
-        if (containsSelected(divTag$tabs)) {
-          aTagDT$attribs$class <- paste(aTagDT$attribs$class, "dropdown-item active")
-        }
-
         # build the dropdown list elements
         liTag <- tags$li(class = "nav-item dropdown", aTagDT)
 
@@ -841,7 +830,18 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         tabsetDropdownMenu <- build(divTag$tabs, "dropdown-menu", textFilter)
         liTag <- tagAppendChild(liTag, tabsetDropdownMenu$navList)
 
-        tabNavList <<- tagAppendChild(tabNavList, liTag)
+        liTag$children[[2]]$name <- "div"
+        liTag <- gsub('<li class="nav-item">', "", liTag)
+        liTag <- gsub('</li>', "", liTag)
+        liTag <- gsub('nav-link', "dropdown-item", liTag)
+        HTML(liTag)
+
+        # If this navbar menu contains a selected item, mark it as active
+        if (containsSelected(divTag$tabs)) {
+          aTagDT$attribs$class <- paste(aTagDT$attribs$class, "dropdown-item active")
+        }
+
+        tabNavList <<- tagAppendChild(tabNavList, HTML(liTag))
         # don't add a standard tab content div, rather add the list of tab
         # content divs that are contained within the tabsetDropdownMenu
         tabContent <<- tagAppendChildren(tabContent, list = tabsetDropdownMenu$content$children)
@@ -887,9 +887,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
 
         # append the elements to our lists
         tabNavList <<- tagAppendChild(tabNavList, liTag)
-        #print(tabNavList)
         tabContent <<- tagAppendChild(tabContent, divTag)
-        #print(tabContent)
 
       }
     }
