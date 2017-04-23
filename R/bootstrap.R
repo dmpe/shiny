@@ -804,29 +804,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
 
       } else if (inherits(divTag, "shiny.navbarmenu")) {
 
-        thisId <- paste("dropdown-tab", tabsetId, tabId, sep="-")
-        divTag$attribs$id <- thisId
-        tabValue <- divTag$attribs$`data-value`
-
-        # create all other a's without being active ones
-        aTag <- tags$a(href=paste("#", thisId, sep=""), class = "dropdown-item",
-                       `data-toggle` = "dropdown-tab",
-                       `data-value` = tabValue, `role` = "dropdown-tab")
-
-        tabId <<- tabId + 1
-
-        # append optional icon
-        aTag <- appendIcon(aTag, divTag$attribs$`data-icon-class`)
-
-        # add the title
-        aTag <- tagAppendChild(aTag, divTag$title)
-
-        # If this navbar menu contains a selected item, mark it as active
-        if (containsSelected(divTag$tabs)) {
-          aTag$attribs$class <- paste(aTag$attribs$class, "dropdown-item active")
-        }
-
-        # create the a tag
+        # create the a tag that open a dropdown
         aTagDT <- tags$a(href="#",
                          class="nav-link dropdown-toggle",
                          `data-toggle`="dropdown", `aria-haspopup`= "true",
@@ -834,27 +812,35 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
         aTagDT <- appendIcon(aTagDT, divTag$iconClass)
         aTagDT <- tagAppendChild(aTagDT, divTag$title)
 
+        # If this navbar menu contains a selected item, mark it as active
+        if (containsSelected(divTag$tabs)) {
+          aTagDT$attribs$class <- paste(aTagDT$attribs$class, "dropdown-item active")
+        }
+
         # text filter for separators
         textFilter <- function(text) {
-          if (grepl("^\\-+$", text))
+          if (grepl("^\\-+$", text)) {
             tags$div(class="dropdown-divider")
-          else
+          } else {
             tags$h6(class="dropdown-header", text)
+          }
         }
+
         # build the child tabset
         tabsetDropdownMenu <- build(divTag$tabs, "dropdown-menu", textFilter)
-        liTag <- tagAppendChild(liTag, tabsetDropdownMenu$navList)
 
         # build the dropdown list elements
         liTag <- tags$li(class = "nav-item dropdown", aTagDT)
+        #liTag <- tagAppendChild(liTag, tabsetDropdownMenu$navList)
 
-        liTagDropDown <- tagAppendChild(liTag, tabsetDropdownMenu)
+        #liTagDropDown <- tagAppendChild(liTag, tabsetDropdownMenu)
         #print(liTagDropDown)
 
-        tabNavList <<- tagAppendChild(tabNavList, liTagDropDown)
-        print(tabNavList)
-        tabContent <<- tagAppendChildren(tabContent, liTag$content$children)
-        print(tabContent)
+        tabNavList <<- tagAppendChild(tabNavList, liTag)
+               # don't add a standard tab content div, rather add the list of tab
+               # content divs that are contained within the tabset
+               tabContent <<- tagAppendChildren(tabContent,
+       list = tabset$content$children)
 
       } else {
         # Standard navbar item
@@ -1393,6 +1379,8 @@ uiOutput <- htmlOutput
 #'   is assigned to.
 #' @param label The label that should appear on the button.
 #' @param class Additional CSS classes to apply to the tag, if any.
+#' @param buttonStyle Defaults to secondary button style as defined in
+#' \url{https://v4-alpha.getbootstrap.com/components/buttons/#examples}
 #' @param ... Other arguments to pass to the container tag function.
 #'
 #' @examples
@@ -1415,10 +1403,11 @@ uiOutput <- htmlOutput
 #' @seealso \code{\link{downloadHandler}}
 #' @export
 downloadButton <- function(outputId,
-                           label="Download",
+                           label="Download", buttonStyle = "btn-secondary"
                            class=NULL, ...) {
+
   aTag <- tags$a(id=outputId,
-                 class=paste('btn btn-secondary shiny-download-link', class),
+                 class=paste('btn shiny-download-link', buttonStyle, class),
                  href='',
                  target='_blank',
                  download=NA,
@@ -1428,9 +1417,9 @@ downloadButton <- function(outputId,
 
 #' @rdname downloadButton
 #' @export
-downloadLink <- function(outputId, label="Download", class=NULL, ...) {
+downloadLink <- function(outputId, label="Download", buttonStyle = "btn-secondary", class=NULL, ...) {
   tags$a(id=outputId,
-         class=paste(c('shiny-download-link', class), collapse=" "),
+         class=paste(c('shiny-download-link', buttonStyle, class), collapse=" "),
          href='',
          target='_blank',
          download=NA,
