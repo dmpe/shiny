@@ -808,7 +808,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
 
         # create the a tag that open a dropdown
         aTagDT <- tags$a(href="#",
-                         class="nav-link dropdown-toggle",
+                         class="dropdown-toggle nav-link ",
                          `data-toggle`="dropdown", `aria-haspopup`= "true",
                          `role` = "button", `aria-expanded`="false")
         aTagDT <- appendIcon(aTagDT, divTag$iconClass)
@@ -826,25 +826,27 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
           }
         }
 
+        # If this navbar menu contains a selected item, mark it as active
+        #if (containsSelected(divTag$tabs)) {
+        #  aTagDT$attribs$class <- paste(aTagDT$attribs$class, "dropdown-item active")
+        #}
+
         # build the child tabsetDropdownMenu
         tabsetDropdownMenu <- build(divTag$tabs, "dropdown-menu", textFilter)
         liTag <- tagAppendChild(liTag, tabsetDropdownMenu$navList)
 
+        #liTagasdasd <<- liTag
         liTag$children[[2]]$name <- "div"
         liTag <- gsub('<li class="nav-item">', "", liTag)
         liTag <- gsub('</li>', "", liTag)
-        liTag <- gsub('nav-link', "dropdown-item", liTag)
+        liTag <- gsub('nav-link', "dropdown-item", liTag, fixed = T)
         HTML(liTag)
 
-        # If this navbar menu contains a selected item, mark it as active
-        if (containsSelected(divTag$tabs)) {
-          aTagDT$attribs$class <- paste(aTagDT$attribs$class, "dropdown-item active")
-        }
 
         tabNavList <<- tagAppendChild(tabNavList, HTML(liTag))
         # don't add a standard tab content div, rather add the list of tab
         # content divs that are contained within the tabsetDropdownMenu
-        tabContent <<- tagAppendChildren(tabContent, list = tabsetDropdownMenu$content$children)
+        tabContent <<- tagAppendChildren(tabContent, list= tabsetDropdownMenu$content$children)
 
       } else {
         # Standard navbar item
