@@ -790,6 +790,14 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
            paste(nms, collapse = ", "))
     }
 
+    if (inherits(divTag, "shiny.navbarmenu") {
+      tabNavList <- tags$div(class = ulClass, id = id)
+      print("works with div")
+    } else {
+      tabNavList <- tags$ul(class = ulClass, id = id)
+      print("works with ul")
+    }
+
     tabNavList <- tags$ul(class = ulClass, id = id)
     tabContent <- tags$div(class = "tab-content")
     tabsetId <- p_randomInt(1000, 10000)
@@ -831,7 +839,7 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL,
 
         # build the child tabsetDropdownMenu
         tabsetDropdownMenu <- build(divTag$tabs, "dropdown-menu", textFilter)
-        liTag <- tagAppendChild(liTag, tabset$navList)
+        liTag <- tagAppendChild(liTag, tabsetDropdownMenu$navList)
 
         tabNavList <<- tagAppendChild(tabNavList, liTag)
         # don't add a standard tab content div, rather add the list of tab
