@@ -5008,7 +5008,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     $el.removeAttr('data-restore');
 
     // Set the label in the text box - dodelat
-    var $fileText = $el.closest('span.custom-file-input').find('input[type=file]');
+    var $fileText = $el.closest('label.custom-file').find('input[type=file]');
     if (IE8) {
       // If we're using IE8/9, just use this placeholder
       $fileText.val("[Uploaded file]");

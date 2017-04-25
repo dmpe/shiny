@@ -202,7 +202,7 @@ function uploadFiles(evt) {
   $el.removeAttr('data-restore');
 
   // Set the label in the text box - dodelat
-  var $fileText = $el.closest('span.custom-file-input').find('input[type=file]');
+  var $fileText = $el.closest('label.custom-file').find('input[type=file]');
   if (IE8) {
     // If we're using IE8/9, just use this placeholder
     $fileText.val("[Uploaded file]");
@@ -239,7 +239,7 @@ $.extend(fileInputBinding, {
       data = JSON.parse(data);
 
       // Set the label in the text box
-      var $fileText = $(el).closest('span.custom-file-input').find('input[type=file]');
+      var $fileText = $(el).closest('label.custom-file').find('input[type=file]');
       if (data.name.length === 1) {
         $fileText.val(data.name[0]);
       } else {

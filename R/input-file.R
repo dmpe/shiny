@@ -26,7 +26,6 @@
 #'   multiple files at once.
 #' @param accept A character vector of MIME types; gives the browser a hint of
 #'   what kind of files the server is expecting.
-#' @param placeholder The text to show before a file has been uploaded.
 #'
 #' @examples
 #' ## Only run examples in interactive R sessions
@@ -70,7 +69,7 @@
 #' }
 #' @export
 fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
-                      width = NULL, placeholder = "No file selected") {
+                      width = NULL) {
 
   restoredValue <- restoreInput(id = inputId, default = NULL)
 
@@ -95,7 +94,7 @@ fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
   if (multiple)
     inputTag$attribs$multiple <- "multiple"
   if (length(accept) > 0)
-    inputTag$attribs$accept <- paste(accept, collapse=',')
+    inputTag$attribs$accept <- paste(accept, collapse = ',')
 
 
   div(class = "form-group shiny-input-container",
@@ -103,8 +102,7 @@ fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
     label %AND% tags$label(label),
 
     tags$label(class = "custom-file",
-      tags$input(type = "file", class = "custom-file-input", id = "file",
-       placeholder = placeholder, readonly = "readonly"),
+      tags$input(class = "custom-file-input", readonly = "readonly", id = "file", type = "file"),
       tags$span(class = "custom-file-control", inputTag)
     ),
 
