@@ -1,3 +1,14 @@
+/* https://stackoverflow.com/questions/21921665/how-to-make-hr-full-width
+to display hr tag in full width*/
+hr {
+  margin-right: 0rem;
+  margin-left: 0rem;
+}
+
+.card {
+  margin-bottom: 1rem;
+}
+
 /* This is necessary so that an empty verbatimTextOutput slot
 is the same height as a non-empty one (only important when
 * placeholder = TRUE) */
@@ -137,15 +148,6 @@ pre.shiny-text-output.noplaceholder:empty {
 .shiny-input-container input[type=file] {
   overflow: hidden;
   max-width: 100%;
-}
-
-/* Old-style progress */
-.shiny-progress-container {
-  position: fixed;
-  top: 0px;
-  width: 100%;
-  /* Make sure it draws above all Bootstrap components */
-  z-index: 2000;
 }
 
 .shiny-progress .progress {
