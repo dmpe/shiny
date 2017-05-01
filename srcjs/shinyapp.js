@@ -772,7 +772,7 @@ var ShinyApp = function() {
 
       } else if (message.style === "old") {
           console.log("check this");
-
+      }
     },
 
     // Update page-level progress bar
@@ -797,7 +797,7 @@ var ShinyApp = function() {
         }
 
       } else if (message.style === "old") {
-        console.log("check this");
+        console.log("check this because it is old");
       }
 
     },

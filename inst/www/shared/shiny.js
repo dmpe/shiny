@@ -1367,32 +1367,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             duration: null
           });
         } else if (message.style === "old") {
-          // For old-style (Shiny <=0.13.2) progress indicators.
-
-          // Add progress container (for all progress items) if not already present
-          var $container = $('.shiny-progress-container');
-          if ($container.length === 0) {
-            $container = $('<div class="shiny-progress-container"></div>');
-            $('body').append($container);
-          }
-
-          // Add div for just this progress ID
-          var depth = $('.shiny-progress.open').length;
-          // The 'bar' class is needed for backward compatibility with Bootstrap 2.
-          var $progress = $('<div class="shiny-progress open">' + '<div class="progress progress-striped active"><div class="progress-bar bar"></div></div>' + '<div class="progress-text">' + '<span class="progress-message">message</span>' + '<span class="progress-detail"></span>' + '</div>' + '</div>');
-
-          $progress.attr('id', message.id);
-          $container.append($progress);
-
-          // Stack bars
-          var $progressBar = $progress.find('.progress');
-          $progressBar.css('top', depth * $progressBar.height() + 'px');
-
-          // Stack text objects
-          var $progressText = $progress.find('.progress-text');
-          $progressText.css('top', 3 * $progressBar.height() + depth * $progressText.outerHeight() + 'px');
-
-          $progress.hide();
+          console.log("check this");
         }
       },
 
@@ -1416,21 +1391,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             $progress.find('.progress-bar').width(message.value * 100 + '%');
           }
         } else if (message.style === "old") {
-          // For old-style (Shiny <=0.13.2) progress indicators.
-
-          var $progress = $('#' + message.id + '.shiny-progress');
-          if (typeof message.message !== 'undefined') {
-            $progress.find('.progress-message').text(message.message);
-          }
-          if (typeof message.detail !== 'undefined') {
-            $progress.find('.progress-detail').text(message.detail);
-          }
-          if (typeof message.value !== 'undefined' && message.value !== null) {
-            $progress.find('.progress').show();
-            $progress.find('.bar').width(message.value * 100 + '%');
-          }
-
-          $progress.fadeIn();
+          console.log("check this because it is old");
         }
       },
 
@@ -1439,17 +1400,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         if (message.style === "notification") {
           exports.notifications.remove(message.id);
         } else if (message.style === "old") {
-          var $progress = $('#' + message.id + '.shiny-progress');
-          $progress.removeClass('open');
-
-          $progress.fadeOut({
-            complete: function complete() {
-              $progress.remove();
-
-              // If this was the last shiny-progress, remove container
-              if ($('.shiny-progress').length === 0) $('.shiny-progress-container').remove();
-            }
-          });
+          console.log("check this");
         }
       }
     };
@@ -4777,7 +4728,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       return $(scope).find('ul.nav.shiny-tab-input');
     },
     getValue: function getValue(el) {
-      var anchor = $(el).find('li:not(.dropdown).active').children('a');
+      var anchor = $(el).find('li:not(.dropdown).nav-item').children('a.nav-link.active');
       if (anchor.length === 1) return this._getTabName(anchor);
 
       return null;
