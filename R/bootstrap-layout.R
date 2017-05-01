@@ -1,4 +1,3 @@
-
 #' Create a page with fluid layout
 #'
 #' Functions for creating fluid page layouts. A fluid page layout consists of

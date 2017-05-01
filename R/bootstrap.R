@@ -623,8 +623,8 @@ tabsetPanel <- function(...,
   tabset <- buildTabset(tabs, paste0("nav nav-", type), NULL, id, selected)
 
   # create the content
-  #first <- tabset$navList
-  #second <- tabset$content
+  # first <- tabset$navList
+  # second <- tabset$content
 
   tabset
 }

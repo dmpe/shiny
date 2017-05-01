@@ -150,12 +150,12 @@ modalDialog <- function(..., title = NULL, footer = modalButton("Dismiss"),
   size <- match.arg(size)
 
   cls <- if (fade) "modal fade" else "modal"
-  div(id = "shiny-modal", class = cls, tabindex = "-1",
+  div(id = "shiny-modal", class = cls, tabindex = "-1", role = "dialog", `aria-hidden`="true",
     `data-backdrop` = if (!easyClose) "static",
     `data-keyboard` = if (!easyClose) "false",
 
     div(
-      class = "modal-dialog", role = "document", 
+      class = "modal-dialog", role = "document",
       class = switch(size, s = "modal-sm", m = NULL, l = "modal-lg"),
       div(class = "modal-content",
         if (!is.null(title)) div(class = "modal-header",
