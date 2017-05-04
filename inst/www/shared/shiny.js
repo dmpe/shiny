@@ -1362,7 +1362,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           // Progress bar starts hidden; will be made visible if a value is provided
           // during updates.
           exports.notifications.show({
-            html: '<div id="shiny-progress-' + message.id + '" class="shiny-progress-notification">' + '<div class="progress progress-striped active" style="display: none;"><div class="progress-bar"></div></div>' + '<div class="progress-text">' + '<span class="progress-message">message</span> ' + '<span class="progress-detail"></span>' + '</div>' + '</div>',
+            html: '<div id="shiny-progress-' + message.id + '" class="shiny-progress-notification">' + '<div class="progress" style="display: none;"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"></div></div>' + '<div class="progress-text">' + '<span class="progress-message">message</span> ' + '<span class="progress-detail"></span>' + '</div>' + '</div>',
             id: message.id,
             duration: null
           });
@@ -4959,7 +4959,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     $el.removeAttr('data-restore');
 
     // Set the label in the text box - dodelat
-    var $fileText = $el.closest('label.custom-file').find('input[type=file]');
+    var $fileText = $el.closest('label.custom-file').find('input[type=file].shiny-bound-input');
     if (IE8) {
       // If we're using IE8/9, just use this placeholder
       $fileText.val("[Uploaded file]");
@@ -4981,7 +4981,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   var fileInputBinding = new InputBinding();
   $.extend(fileInputBinding, {
     find: function find(scope) {
-      return $(scope).find('input[type="file"]');
+      return $(scope).find('input[type="file"].shiny-bound-input');
     },
     getId: function getId(el) {
       return InputBinding.prototype.getId.call(this, el) || el.name;
@@ -4995,7 +4995,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         data = JSON.parse(data);
 
         // Set the label in the text box
-        var $fileText = $(el).closest('label.custom-file').find('input[type=file]');
+        var $fileText = $(el).find('.custom-file-control:lang(en)::after');
         if (data.name.length === 1) {
           $fileText.val(data.name[0]);
         } else {
@@ -5004,7 +5004,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         // Manually set up progress bar. A bit inelegant because it duplicates
         // code from FileUploader, but duplication is less bad than alternatives.
-        var $progress = $(el).closest('div.form-group').find('.progress');
+        var $progress = $(el).find('.progress');
         var $bar = $progress.find('.progress-bar');
         // $progress.removeClass('active');
         $bar.width('100%');

@@ -202,7 +202,7 @@ function uploadFiles(evt) {
   $el.removeAttr('data-restore');
 
   // Set the label in the text box - dodelat
-  var $fileText = $el.closest('label.custom-file').find('input[type=file]');
+  var $fileText = $el.closest('label.custom-file').find('input[type=file].shiny-bound-input');
   if (IE8) {
     // If we're using IE8/9, just use this placeholder
     $fileText.val("[Uploaded file]");
@@ -225,7 +225,7 @@ function uploadFiles(evt) {
 var fileInputBinding = new InputBinding();
 $.extend(fileInputBinding, {
   find: function(scope) {
-    return $(scope).find('input[type="file"]');
+    return $(scope).find('input[type="file"].shiny-bound-input');
   },
   getId: function(el) {
     return InputBinding.prototype.getId.call(this, el) || el.name;
@@ -239,7 +239,7 @@ $.extend(fileInputBinding, {
       data = JSON.parse(data);
 
       // Set the label in the text box
-      var $fileText = $(el).closest('label.custom-file').find('input[type=file]');
+      var $fileText = $(el).find('.custom-file-control:lang(en)::after');
       if (data.name.length === 1) {
         $fileText.val(data.name[0]);
       } else {
@@ -248,7 +248,7 @@ $.extend(fileInputBinding, {
 
       // Manually set up progress bar. A bit inelegant because it duplicates
       // code from FileUploader, but duplication is less bad than alternatives.
-      var $progress = $(el).closest('div.form-group').find('.progress');
+      var $progress = $(el).find('.progress');
       var $bar = $progress.find('.progress-bar');
       // $progress.removeClass('active');
       $bar.width('100%');
