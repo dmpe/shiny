@@ -238,21 +238,19 @@ $.extend(fileInputBinding, {
     if (data) {
       data = JSON.parse(data);
 
-      // Set the label in the text box
-      var $fileText = $(el).find('.custom-file-control:lang(en)::after');
-      if (data.name.length === 1) {
-        $fileText.val(data.name[0]);
-      } else {
-        $fileText.val(data.name.length + " files");
-      }
+      // Set the label in the text box - nikdy nenajde ovlivnit
+      //var $fileText = $(el).find('span.custom-file-control:lang(en)');
+      //if (data.name.length === 1) {
+      //  $fileText.val(data.name[0]);
+      //} else {
+      //  $fileText.val(data.name.length + " files");
+      //}
 
       // Manually set up progress bar. A bit inelegant because it duplicates
       // code from FileUploader, but duplication is less bad than alternatives.
-      var $progress = $(el).find('.progress');
-      var $bar = $progress.find('.progress-bar');
-      // $progress.removeClass('active');
-      $bar.width('100%');
-      $bar.css('visibility', 'visible');
+      var $progress_bar = $(el).find('.progress .progress-bar');
+      $progress_bar.width('100%');
+      $progress_bar.css('visibility', 'visible');
 
       return data;
 
