@@ -2418,6 +2418,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           // within specified delay, trigger our custom 'dblclick2' event.
           pending_e = null;
           triggerEvent('dblclick2', e);
+          console.log("event triggered");
         }
       }
     }
