@@ -1990,6 +1990,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       // This object listens for mousedowns, and triggers mousedown2 and dblclick2
       // events as appropriate.
       var clickInfo = imageutils.createClickInfo($el, opts.dblclickId, opts.dblclickDelay);
+      console.log(clickInfo);
 
       $el.on('mousedown.image_output', clickInfo.mousedown);
 
@@ -2012,6 +2013,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       if (opts.dblclickId) {
         // We'll use the clickHandler's mousedown function, but register it to
         // our custom 'dblclick2' event.
+        console.log("double-clicked here");
         var dblclickHandler = imageutils.createClickHandler(opts.dblclickId, opts.clickClip, opts.coordmap);
         $el.on('dblclick2.image_output', dblclickHandler.mousedown);
 
@@ -4994,7 +4996,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       if (data) {
         data = JSON.parse(data);
 
-        // Set the label in the text box - nikdy nenajde ovlivnit
+        // Set the label in the text box - see github issue
         //var $fileText = $(el).find('span.custom-file-control:lang(en)');
         //if (data.name.length === 1) {
         //  $fileText.val(data.name[0]);

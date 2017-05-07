@@ -101,6 +101,7 @@ $.extend(imageOutputBinding, {
     // This object listens for mousedowns, and triggers mousedown2 and dblclick2
     // events as appropriate.
     var clickInfo = imageutils.createClickInfo($el, opts.dblclickId, opts.dblclickDelay);
+    console.log(clickInfo);
 
     $el.on('mousedown.image_output', clickInfo.mousedown);
 
@@ -124,6 +125,7 @@ $.extend(imageOutputBinding, {
     if (opts.dblclickId) {
       // We'll use the clickHandler's mousedown function, but register it to
       // our custom 'dblclick2' event.
+      console.log("double-clicked here");
       var dblclickHandler = imageutils.createClickHandler(opts.dblclickId,
         opts.clickClip, opts.coordmap);
       $el.on('dblclick2.image_output', dblclickHandler.mousedown);
@@ -553,6 +555,7 @@ imageutils.createClickInfo = function($el, dblclickId, dblclickDelay) {
         // within specified delay, trigger our custom 'dblclick2' event.
         pending_e = null;
         triggerEvent('dblclick2', e);
+        console.log("event triggered");
       }
     }
   }

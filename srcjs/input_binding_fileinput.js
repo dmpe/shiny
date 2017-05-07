@@ -238,7 +238,7 @@ $.extend(fileInputBinding, {
     if (data) {
       data = JSON.parse(data);
 
-      // Set the label in the text box - nikdy nenajde ovlivnit
+      // Set the label in the text box - see github issue
       //var $fileText = $(el).find('span.custom-file-control:lang(en)');
       //if (data.name.length === 1) {
       //  $fileText.val(data.name[0]);
