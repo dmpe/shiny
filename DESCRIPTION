@@ -71,8 +71,9 @@ Imports:
     digest,
     ggplot2 (>= 2.2.1),
     htmltools (>= 0.3.5),
-    R6 (>= 2.2),
-    sourcetools
+    R6 (>= 2.0),
+    sourcetools,
+    tools
 Suggests:
     datasets,
     Cairo (>= 1.5-9),
