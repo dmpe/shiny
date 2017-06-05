@@ -155,14 +155,14 @@ showcaseCodeTabs <- function(codeLicense) {
     wwwFiles$htmlFiles <- list.files(path, pattern = "\\.html$")
   }
   with(tags, div(id="showcase-code-tabs",
-    a(id="showcase-code-position-toggle",
-      class="btn btn-secondary btn-sm ml-auto", # for alternative approach float-right
-      onclick="toggleCodePosition()",
-      icon("level-up"),
-      "show with app"),
     ul(class="nav nav-tabs",
        navTabsHelper(rFiles),
-       navTabsDropdown(unlist(wwwFiles))
+       navTabsDropdown(unlist(wwwFiles)),
+       a(id="showcase-code-position-toggle",
+         class="btn btn-secondary ml-auto", # for alternative approach float-right
+         onclick="toggleCodePosition()",
+         icon("level-up"),
+         "show with app")
     ),
     div(class="tab-content", id="showcase-code-content",
         tabContentHelper(rFiles, path = getwd(), language = "r"),
