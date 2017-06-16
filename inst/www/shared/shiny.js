@@ -3647,12 +3647,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
       if (data.hasOwnProperty('label')) $(el).parent().find('label[for="' + $escape(el.id) + '"]').text(data.label);
 
+      if (data.hasOwnProperty('placeholder')) el.placeholder = data.placeholder;
+
       $(el).trigger('change');
     },
     getState: function getState(el) {
       return {
         label: $(el).parent().find('label[for="' + $escape(el.id) + '"]').text(),
-        value: el.value
+        value: el.value,
+        placeholder: el.placeholder
       };
     },
     getRatePolicy: function getRatePolicy() {
@@ -4797,6 +4800,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         // invalidated reactives, but observers don't actually execute.
         self.shinyapp.makeRequest('uploadieFinish', [], function () {}, function () {});
         $(self.iframe).remove();
+        // Reset the file input's value to "". This allows the same file to be
+        // uploaded again. https://stackoverflow.com/a/22521275
+        $(self.fileEl).val("");
       };
       if (this.iframe.attachEvent) {
         this.iframe.attachEvent('onload', iframeDestroy);
@@ -4912,6 +4918,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         self.$setActive(false);
         self.onProgress(null, 1);
         self.$bar().text('Upload complete');
+        // Reset the file input's value to "". This allows the same file to be
+        // uploaded again. https://stackoverflow.com/a/22521275
+        $(evt.el).val("");
       }, function (error) {
         self.onError(error);
       });
