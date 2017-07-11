@@ -108,6 +108,7 @@ $.extend(FileUploader.prototype, FileProcessor.prototype);
         return xhrVal;
       },
       data: file,
+      contentType: 'application/octet-stream',
       processData: false,
       success: function() {
         self.progressBytes += file.size;
