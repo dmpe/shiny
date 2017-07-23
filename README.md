@@ -16,6 +16,8 @@ The migration guide from v3 is here: [https://v4-alpha.getbootstrap.com/migratio
 * Major: Dropped IE8, IE9, and iOS 6 support. v4 is now only IE10+ and iOS 7+. For sites needing either of those, use v3.
 * Major: Dropped icons from Bootstrap. Only font-awesome icons are included in Shiny and supported.
 
+**See this BUGs for** current BS4 status: <https://github.com/rstudio/shiny/issues/1604> and <https://github.com/rstudio/shiny/issues/1655>
+
 ## Features
 
 * Build useful web applications with only a few lines of code&mdash;no JavaScript required.

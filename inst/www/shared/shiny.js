@@ -4918,6 +4918,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           return xhrVal;
         },
         data: file,
+        contentType: 'application/octet-stream',
         processData: false,
         success: function success() {
           self.progressBytes += file.size;
