@@ -9,7 +9,7 @@ navbarPage(title, ..., id = NULL, selected = NULL, position = NULL,
   header = NULL, footer = NULL, inverse = FALSE, collapsible = FALSE,
   fluid = TRUE, theme = NULL, windowTitle = title)
 
-navbarMenu(title, ..., icon = NULL)
+navbarMenu(title, ..., menuName = title, icon = NULL)
 }
 \arguments{
 \item{title}{The title to display in the navbar}
@@ -59,6 +59,10 @@ www directory). For example, to use the theme located at
 \item{windowTitle}{The title that should be displayed by the browser window.
 Useful if \code{title} is not a string.}
 
+\item{menuName}{A name that identifies this \code{navbarMenu}. This
+is needed if you want to insert/remove or show/hide an entire
+\code{navbarMenu}.}
+
 \item{icon}{Optional icon to appear on a \code{navbarMenu} tab.}
 }
 \value{
@@ -92,5 +96,6 @@ navbarPage("App Title",
 }
 \seealso{
 \code{\link{tabPanel}}, \code{\link{tabsetPanel}},
-  \code{\link{updateNavbarPage}}
+  \code{\link{updateNavbarPage}}\code{\link{insertTab}},
+  \code{\link{showTab}}
 }
