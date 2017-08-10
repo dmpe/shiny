@@ -867,8 +867,8 @@ buildTabItem <- function(index, tabsetId, foundSelected, tabs = NULL,
   } else {
     # tabPanel item: create the tab's liTag and divTag
     tabId <- paste("tab", tabsetId, index, sep = "-")
-    liTag <- tags$li(
-               tags$a(
+    liTag <- tags$li(class = "nav-item",
+               tags$a(class = "nav-link",
                  href = paste("#", tabId, sep = ""),
                  `data-toggle` = "tab",
                  `data-value` = divTag$attribs$`data-value`,
@@ -878,7 +878,7 @@ buildTabItem <- function(index, tabsetId, foundSelected, tabs = NULL,
     )
     # if this tabPanel is selected item, mark it active
     if (isTabSelected(divTag)) {
-      liTag$attribs$class <- "active"
+      liTag$attribs$class <- paste(liTag$attribs$class, "active")
       divTag$attribs$class <- "tab-pane active"
     }
     divTag$attribs$id <- tabId
