@@ -848,13 +848,14 @@ buildTabItem <- function(index, tabsetId, foundSelected, tabs = NULL,
     # navbarMenu item: build the child tabset
     tabset <- buildTabset(divTag$tabs, "dropdown-menu",
       navbarMenuTextFilter, foundSelected = foundSelected)
+    #https://v4-alpha.getbootstrap.com/components/navs/
 
     # if this navbarMenu contains a selected item, mark it active
     containsSelected <- containsSelectedTab(divTag$tabs)
     liTag <- tags$li(
-      class = paste0("dropdown-item", if (containsSelected) " active"),
+      class = paste0("nav-item dropdown", if (containsSelected) " active"),
       tags$a(href = "#",
-        class = "dropdown-toggle", `data-toggle` = "dropdown",
+        class = "nav-link dropdown-toggle", `data-toggle` = "dropdown",
         `data-value` = divTag$menuName,
         divTag$title, tags$b(class = "caret"),
         getIcon(iconClass = divTag$iconClass)
@@ -867,20 +868,42 @@ buildTabItem <- function(index, tabsetId, foundSelected, tabs = NULL,
   } else {
     # tabPanel item: create the tab's liTag and divTag
     tabId <- paste("tab", tabsetId, index, sep = "-")
-    liTag <- tags$li(class = "nav-item",
-               tags$a(class = "nav-link",
-                 href = paste("#", tabId, sep = ""),
-                 `data-toggle` = "tab",
-                 `data-value` = divTag$attribs$`data-value`,
-                 divTag$attribs$title,
-                 getIcon(iconClass = divTag$attribs$`data-icon-class`)
-               )
-    )
+    # BY default, it is not selected/active.
+    # TODO
+    aTagForDropDownMenu <- FALSE
+    tabId <- 1
+
+    if (!aTagForDropDownMenu) {
+      # if false
+      if (tabId == 1) {
+        # if it is the first one, then make it active by default
+        aTag <- tags$a(class = "nav-link active",
+                       href = paste("#", tabId, sep = ""),
+                       `data-toggle` = "tab",
+                       `data-value` = divTag$attribs$`data-value`,
+                       divTag$attribs$title,
+                       getIcon(iconClass = divTag$attribs$`data-icon-class`)
+        )
+      } else {
+        # create all other a's without being active ones
+        aTag <- tags$a(class = "nav-link",
+                       href = paste("#", tabId, sep = ""),
+                       `data-toggle` = "tab",
+                       `data-value` = divTag$attribs$`data-value`,
+                       divTag$attribs$title,
+                       getIcon(iconClass = divTag$attribs$`data-icon-class`)
+        )
+      }
+    }
+
+    liTag <- tags$li(class = "nav-item", aTag)
+
     # if this tabPanel is selected item, mark it active
     if (isTabSelected(divTag)) {
-      liTag$attribs$class <- paste(liTag$attribs$class, "active")
+      aTag$attribs$class <- paste(aTag$attribs$class, "active")
       divTag$attribs$class <- "tab-pane active"
     }
+
     divTag$attribs$id <- tabId
     divTag$attribs$title <- NULL
   }
