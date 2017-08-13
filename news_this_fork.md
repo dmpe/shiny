@@ -20,6 +20,8 @@ NEWS file for this fork
   - `browser.js`
 
 - in `R` folder:
+  - `App.R`
+  - `Bookmark-state.R`
   - `Bootstrap.R`
   - `Bootstrap-layout.R`
   - `Input-data.R`

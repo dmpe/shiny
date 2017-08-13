@@ -167,14 +167,14 @@ fixedRow <- function(...) {
 #'
 #' @param width The grid width of the column (must be between 1 and 12)
 #' @param ... Elements to include within the column
-#' @param offset The number of columns to offset this column from the end of the
-#'   previous column.
+#' @param offset One of \code{ml-auto}, \code{ml-md-auto} or \code{mr-auto}
 #'
 #' @return A column that can be included within a
 #'   \code{\link{fluidRow}} or \code{\link{fixedRow}}.
 #'
 #'
-#' @seealso \code{\link{fluidRow}}, \code{\link{fixedRow}}.
+#' @seealso \code{\link{fluidRow}}, \code{\link{fixedRow}},
+#' \code{\link{https://getbootstrap.com/docs/4.0/layout/grid/#offsetting-columns}}
 #'
 #' @examples
 #' ## Only run examples in interactive R sessions
@@ -215,14 +215,16 @@ fixedRow <- function(...) {
 #' shinyApp(ui, server = function(input, output) { })
 #' }
 #' @export
-column <- function(width, ..., offset = 0) {
+column <- function(width, ..., offset = "") {
 
   if (!is.numeric(width) || (width < 1) || (width > 12))
     stop("column width must be between 1 and 12")
 
   colClass <- paste0("col-md-", width)
-  if (offset > 0)
-    colClass <- paste0(colClass, " offset-md-", offset)
+  if (!is.null(offset)) {
+    colClass <- paste(colClass, offset)
+  }
+
   div(class = colClass, ...)
 }
 

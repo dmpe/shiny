@@ -456,8 +456,8 @@ knit_print.shiny.appobj <- function(x, ...) {
     output <- tags$div(
       style=paste("width:", width, "; height:", height, "; text-align: center;",
                   "box-sizing: border-box;"),
-      class="text-muted well",
-      "Shiny applications not supported in static R Markdown documents")
+      class="card card-body", tags$p(class="text-muted card-text",
+      "Shiny applications not supported in static R Markdown documents"))
   }
   else {
     path <- addSubApp(x)

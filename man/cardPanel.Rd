@@ -13,7 +13,7 @@ cardPanel(...)
 The newly created panel.
 }
 \description{
-Creates a panel with a slightly inset border and grey background. Equivalent
+Creates a card with a slightly inset border and grey background. Equivalent
 to Bootstrap's \code{card} CSS class. Bootstrap v4 replaces \code{well} CSS
 class with \code{card}s class.
 }
