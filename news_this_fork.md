@@ -19,3 +19,8 @@ NEWS file for this fork
   - `Bootstrap-layout.R`
   - `Input-data.R`
   - `Input-file.R`
+  - `Input-slider.R`
+  - `jqueryui.R`
+  - `modal.R`
+  - `shinyUI.R`
+  - `showcase.R`

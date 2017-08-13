@@ -44,7 +44,7 @@ renderPage <- function(ui, connection, showcase=0, testMode=FALSE) {
 
   shiny_deps <- list(
     htmlDependency("json2", "2014.02.04", c(href="shared"), script = "json2-min.js"),
-    htmlDependency("jquery", "3.1.1", c(href="shared"), script = "jquery.js"),
+    htmlDependency("jquery", "3.2.1", c(href="shared"), script = "jquery.js"),
     htmlDependency("jquery-migrate", "3.0.0", c(href="shared"), script = "jquery-migrate.js"),
     htmlDependency("shiny", utils::packageVersion("shiny"), c(href="shared"),
       script = if (getOption("shiny.minified", TRUE)) "shiny.min.js" else "shiny.js",
