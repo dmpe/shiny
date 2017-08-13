@@ -88,7 +88,7 @@ dateRangeInput <- function(inputId, label, start = NULL, end = NULL,
 
   attachDependencies(
     div(id = inputId,
-      class = "shiny-date-range-input form-group shiny-input-container",
+      class = "form-group shiny-date-range-input shiny-input-container",
       style = if (!is.null(width)) paste0("width: ", validateCssUnit(width), ";"),
 
       controlLabel(inputId, label),

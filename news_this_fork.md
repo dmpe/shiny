@@ -14,3 +14,8 @@ NEWS file for this fork
 
 
 ###
+- Changes to styles applied in (non-exhaustive)
+  - `Bootstrap.R`
+  - `Bootstrap-layout.R`
+  - `Input-data.R`
+  - `Input-file.R`

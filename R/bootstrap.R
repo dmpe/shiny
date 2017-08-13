@@ -61,7 +61,7 @@ bootstrapLib <- function(theme = NULL, browserLanguage = "en") {
       file = system.file("www/shared/bootstrap", package = "shiny")
     ),
     script = c(
-      "js/tether.min.js",
+      "js/popper.min.js",
       "js/bootstrap.min.js"
     ),
     stylesheet = if (is.null(theme)) "css/bootstrap.min.css",
@@ -1510,11 +1510,11 @@ tableOutput <- function(outputId) {
 
 dataTableDependency <- list(
   htmlDependency(
-    "datatables", "1.10.13", c(href = "shared/datatables"),
+    "datatables", "1.10.15", c(href = "shared/datatables"),
     script = "js/jquery.dataTables.min.js"
   ),
   htmlDependency(
-    "datatables-bootstrap", "1.10.13", c(href = "shared/datatables"),
+    "datatables-bootstrap", "1.10.15", c(href = "shared/datatables"),
     stylesheet = c("css/dataTables.bootstrap4.css", "css/dataTables.extra.css"),
     script = "js/dataTables.bootstrap4.js"
   )

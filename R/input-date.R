@@ -87,7 +87,7 @@ dateInput <- function(inputId, label, value = NULL, min = NULL, max = NULL,
   value <- restoreInput(id = inputId, default = value)
 
   tags$div(id = inputId,
-    class = "shiny-date-input form-group shiny-input-container",
+    class = "form-group shiny-date-input shiny-input-container",
     style = if (!is.null(width)) paste0("width: ", validateCssUnit(width), ";"),
 
     controlLabel(inputId, label),
@@ -106,10 +106,10 @@ dateInput <- function(inputId, label, value = NULL, min = NULL, max = NULL,
 }
 
 datePickerDependency <- htmlDependency(
-  "bootstrap-datepicker", "1.6.4", c(href = "shared/datepicker"),
+  "bootstrap-datepicker", "1.7.1", c(href = "shared/datepicker"),
   script = "js/bootstrap-datepicker.min.js",
   stylesheet = "css/bootstrap-datepicker3.min.css",
-  # Need to enable noConflict mode. See #1346.
+  # Need to enable noConflict mode. See https://github.com/rstudio/shiny/issues/1346.
   head = "<script>
 (function() {
   var datepicker = $.fn.datepicker.noConflict();
