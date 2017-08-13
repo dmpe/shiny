@@ -174,7 +174,7 @@ fixedRow <- function(...) {
 #'
 #'
 #' @seealso \code{\link{fluidRow}}, \code{\link{fixedRow}},
-#' \code{\link{https://getbootstrap.com/docs/4.0/layout/grid/#offsetting-columns}}
+#' \url{https://getbootstrap.com/docs/4.0/layout/grid/#offsetting-columns}
 #'
 #' @examples
 #' ## Only run examples in interactive R sessions
@@ -207,7 +207,7 @@ fixedRow <- function(...) {
 #'     column(width = 4,
 #'       "4"
 #'     ),
-#'     column(width = 3, offset = 2,
+#'     column(width = 3, offset = "mr-auto",
 #'       "3 offset 2"
 #'     )
 #'   )
@@ -249,7 +249,7 @@ column <- function(width, ..., offset = "") {
 #' shinyApp(ui, server = function(input, output) { })
 #' }
 #' @export
-titlePanel <- function(title, windowTitle=title) {
+titlePanel <- function(title, windowTitle = title) {
   tagList(
     tags$head(tags$title(windowTitle)),
     h2(title)
@@ -600,11 +600,7 @@ flexfill <- function(..., direction, flex, width = width, height = height) {
   divArgs <- list(
     class = sprintf("flexfill-container flexfill-container-%s", direction),
     style = css(
-      display = "-webkit-flex",
-      display = "-ms-flexbox",
       display = "flex",
-      .webkit.flex.direction = direction,
-      .ms.flex.direction = direction,
       flex.direction = direction,
       width = validateCssUnit(width),
       height = validateCssUnit(height)
@@ -617,8 +613,6 @@ flexfill <- function(..., direction, flex, width = width, height = height) {
           class = "flexfill-item",
           style = css(
             position = "relative",
-            "-webkit-flex" = "none",
-            "-ms-flex" = "none",
             flex = "none"
           ),
           style = paste0(main, ":auto;", cross, ":100%;"),
@@ -634,8 +628,6 @@ flexfill <- function(..., direction, flex, width = width, height = height) {
           class = "flexfill-item",
           style = css(
             position = "relative",
-            "-webkit-flex" = flexValue,
-            "-ms-flex" = flexValue,
             flex = flexValue,
             width = "100%", height = "100%"
           ),

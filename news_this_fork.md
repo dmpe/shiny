@@ -32,3 +32,7 @@ NEWS file for this fork
   - `modal.R`
   - `shinyUI.R`
   - `showcase.R`
+
+- Notes:
+  - Instead of using `flowLayout` by applying `shiny-flow-layout` CSS stylying, consider <https://getbootstrap.com/docs/4.0/layout/grid/#alignment>
+  - `flexfill` doesnt need prefixes anymore due to bootstrap 4 itself. 

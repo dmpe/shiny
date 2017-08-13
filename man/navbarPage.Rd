@@ -7,7 +7,7 @@
 \usage{
 navbarPage(title, ..., id = NULL, selected = NULL, position = NULL,
   header = NULL, footer = NULL, inverse = FALSE, collapsible = FALSE,
-  fluid = TRUE, theme = NULL, windowTitle = title)
+  fluid = TRUE, theme = NULL, windowTitle = title, color = NULL)
 
 navbarMenu(title, ..., menuName = title, icon = NULL)
 }

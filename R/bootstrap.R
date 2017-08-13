@@ -312,13 +312,14 @@ navbarPage <- function(title,
                        collapsible = FALSE,
                        fluid = TRUE,
                        theme = NULL,
-                       windowTitle = title) {
+                       windowTitle = title,
+                       color = NULL) {
 
   # alias title so we can avoid conflicts w/ title in withTags
   pageTitle <- title
 
   # navbar class based on options
-  navbarClass <- "navbar navbar-toggleable-md"
+  navbarClass <- "navbar navbar-expand-md"
 
   if (!is.null(position))
     navbarClass <- paste(navbarClass, " ", position, sep = "")
@@ -326,7 +327,11 @@ navbarPage <- function(title,
   if (inverse) {
     navbarClass <- paste(navbarClass, "navbar-inverse bg-inverse")
   } else {
-    navbarClass <- paste(navbarClass, "navbar-light")
+    navbarClass <- paste(navbarClass, "navbar-light bg-light")
+  }
+
+  if (!is.null(color)) {
+    navbarClass <- paste(navbarClass, color)
   }
 
   if (!is.null(id))
@@ -419,7 +424,7 @@ headerPanel <- function(title, windowTitle=title) {
 #'
 #' Creates a card with a slightly inset border and grey background. Equivalent
 #' to Bootstrap's \code{card} CSS class. Bootstrap v4 replaces \code{well} CSS
-#' class with \code{card}s class.
+#' class with \code{card}'s class.
 #'
 #' @param ... UI elements to include inside the panel.
 #' @return The newly created panel.
@@ -712,7 +717,7 @@ navlistPanel <- function(...,
 
   # text filter for headers
   textFilter <- function(text) {
-      tags$li(class="navbar-brand", text)
+      tags$a(class="navbar-brand", text)
   }
 
   if (!is.null(id))
@@ -721,7 +726,7 @@ navlistPanel <- function(...,
   # build the tabset
   tabs <- list(...)
   tabset <- buildTabset(tabs,
-                        "nav nav-pills flex-column",
+                        "nav nav-pills flex-column flex-sm-row",
                         textFilter,
                         id,
                         selected)

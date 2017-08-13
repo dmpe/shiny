@@ -52,7 +52,7 @@ ui <- fluidPage(
     column(width = 4,
       "4"
     ),
-    column(width = 3, offset = 2,
+    column(width = 3, offset = "mr-auto",
       "3 offset 2"
     )
   )
@@ -62,5 +62,5 @@ shinyApp(ui, server = function(input, output) { })
 }
 \seealso{
 \code{\link{fluidRow}}, \code{\link{fixedRow}},
-\code{\link{https://getbootstrap.com/docs/4.0/layout/grid/#offsetting-columns}}
+\url{https://getbootstrap.com/docs/4.0/layout/grid/#offsetting-columns}
 }

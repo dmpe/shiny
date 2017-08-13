@@ -1,5 +1,3 @@
-
-
 # Call an application hook. Application hooks are provided so that front ends
 # can know when a Shiny application is running:
 #
