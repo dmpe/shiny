@@ -658,7 +658,7 @@ tabsetPanel <- function(...,
   type <- match.arg(type)
 
   tabset <- buildTabset(tabs, paste0("nav nav-", type), NULL, id, selected)
-
+  # https://github.com/rstudio/shiny/blob/master/R/bootstrap.R#L679
   # create the content
   # first <- tabset$navList
   # second <- tabset$content
@@ -862,6 +862,7 @@ buildTabItem <- function(index, tabsetId, foundSelected, tabs = NULL,
       tags$a(href = "#",
         class = "nav-link dropdown-toggle", `data-toggle` = "dropdown",
         `data-value` = divTag$menuName,
+        `role` = "button",
         divTag$title, tags$b(class = "caret"),
         getIcon(iconClass = divTag$iconClass)
       ),
@@ -885,23 +886,24 @@ buildTabItem <- function(index, tabsetId, foundSelected, tabs = NULL,
         aTag <- tags$a(class = "nav-link active",
                        href = paste("#", tabId, sep = ""),
                        `data-toggle` = "tab",
-                       `data-value` = divTag$attribs$`data-value`,
-                       divTag$attribs$title,
                        getIcon(iconClass = divTag$attribs$`data-icon-class`)
+                       `data-value` = divTag$attribs$`data-value`,
+                       divTag$attribs$title
+
         )
       } else {
         # create all other a's without being active ones
         aTag <- tags$a(class = "nav-link",
                        href = paste("#", tabId, sep = ""),
                        `data-toggle` = "tab",
-                       `data-value` = divTag$attribs$`data-value`,
-                       divTag$attribs$title,
                        getIcon(iconClass = divTag$attribs$`data-icon-class`)
+                       `data-value` = divTag$attribs$`data-value`,
+                       divTag$attribs$title
         )
       }
     }
 
-    liTag <- tags$li(class = "nav-item", aTag)
+    liTag <- tags$li(aTag, class = "nav-item")
 
     # if this tabPanel is selected item, mark it active
     if (isTabSelected(divTag)) {

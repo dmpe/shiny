@@ -59,7 +59,8 @@ actionLink <- function(inputId, label, icon = NULL, ...) {
 
   tags$a(id=inputId,
     href="#",
-    class="action-button",
+    `role`="button",
+    class="btn btn-link action-button",
     `data-val` = value,
     list(validateIcon(icon), label),
     ...
