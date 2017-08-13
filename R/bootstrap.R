@@ -417,7 +417,7 @@ headerPanel <- function(title, windowTitle=title) {
 
 #' Create a card panel
 #'
-#' Creates a panel with a slightly inset border and grey background. Equivalent
+#' Creates a card with a slightly inset border and grey background. Equivalent
 #' to Bootstrap's \code{card} CSS class. Bootstrap v4 replaces \code{well} CSS
 #' class with \code{card}s class.
 #'
@@ -425,7 +425,7 @@ headerPanel <- function(title, windowTitle=title) {
 #' @return The newly created panel.
 #' @export
 cardPanel <- function(...) {
-  div(class="card card-block bg-faded", ...)
+  div(class="card card-body bg-light", ...)
 }
 
 #' Create a sidebar panel
@@ -451,7 +451,7 @@ cardPanel <- function(...) {
 #' @export
 sidebarPanel <- function(..., width = 4) {
   div(class=paste0("col-md-", width),
-    tags$form(class="card card-block bg-faded",
+    tags$form(class="card card-body bg-light",
       ...
     )
   )
@@ -728,7 +728,7 @@ navlistPanel <- function(...,
 
   # create the columns
   columns <- list(
-    column(widths[[1]], class=ifelse(card, "card card-block bg-faded", ""), tabset$navList),
+    column(widths[[1]], class=ifelse(card, "card card-body bg-light", ""), tabset$navList),
     column(widths[[2]], tabset$content)
   )
 
@@ -1144,7 +1144,7 @@ textOutput <- function(outputId, container = if (inline) span else div, inline =
 #' @export
 verbatimTextOutput <- function(outputId, placeholder = FALSE) {
   pre(id = outputId,
-      class = paste(c("card card-block bg-faded shiny-text-output", if (!placeholder) "noplaceholder"),
+      class = paste(c("card card-body bg-light shiny-text-output", if (!placeholder) "noplaceholder"),
                     collapse = " ")
       )
 }

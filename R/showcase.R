@@ -192,7 +192,7 @@ showcaseAppInfo <- function() {
     desc <- read.dcf(con)
   }
   with(tags,
-    div(class="container-fluid shiny-code-container card card-bloc bg-faded",
+    div(class="container-fluid shiny-code-container card card-body bg-light",
         id="showcase-card",
         div(class="row",
           if (hasDesc || hasReadme) {

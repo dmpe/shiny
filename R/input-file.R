@@ -102,7 +102,7 @@ fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
     label %AND% tags$label(label),
 
     tags$label(class = "custom-file",
-      tags$input(class = "form-control-file", readonly = "readonly", id = "file", type = "file"),
+      tags$input(class = "form-file-input", id = "file", type = "file"),
       tags$span(class = "custom-file-control", inputTag)
     ),
 

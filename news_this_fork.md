@@ -1,7 +1,8 @@
 NEWS file for this fork
 =======
 
-### Breaking changes
+### Breaking changes:
+
 - Upgraded Bootstrap to v4 beta and many other libraries as well (as of August 2017).
   - Jquery to v3.2.1
   - Highlight to v9.12 (based on customized pack from <https://highlightjs.org/download/>)
@@ -13,13 +14,18 @@ NEWS file for this fork
   - Strftime to v0.10 <https://github.com/samsonjs/strftime/releases>
 
 
-###
-- Changes to styles applied in (non-exhaustive)
+### Changes to styles applied in (non-exhaustive):
+
+- in `srcjs` folder:
+  - `browser.js`
+
+- in `R` folder:
   - `Bootstrap.R`
   - `Bootstrap-layout.R`
   - `Input-data.R`
   - `Input-file.R`
   - `Input-slider.R`
+  - `Input-checkbox.R`
   - `jqueryui.R`
   - `modal.R`
   - `shinyUI.R`
