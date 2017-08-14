@@ -24,15 +24,30 @@ NEWS file for this fork
   - `Bookmark-state.R`
   - `Bootstrap.R`
   - `Bootstrap-layout.R`
-  - `Input-data.R`
-  - `Input-file.R`
-  - `Input-slider.R`
+  - `Input-action.R`
   - `Input-checkbox.R`
+  - `Input-checkboxgroup.R`
+  - `Input-utils.R`
+  - `Input-date.R`
+  - `Input-daterange.R`
+  - `Input-file.R`
+    - unfinished because new logic is required for uploading files <https://getbootstrap.com/docs/4.0/components/forms/#file-browser>
+      - impacts this R file, `shiny.css`, `shiny.js`, `input_binding_fileinput.js`
+  - `Input-numeric.R`
+  - `Input-password.R`
+  - `Input-radiobuttons.R`
+  - `Input-slider.R`
+  - `Input-select.R`
+  - `Input-button.R`
+  - `Input-text.R`
+  - `Input-textarea.R`
   - `jqueryui.R`
   - `modal.R`
   - `shinyUI.R`
   - `showcase.R`
+  - `icons.R`
+    - font awesome is included however glyphicons are deleted now
 
 - Notes:
   - Instead of using `flowLayout` by applying `shiny-flow-layout` CSS stylying, consider <https://getbootstrap.com/docs/4.0/layout/grid/#alignment>
-  - `flexfill` doesnt need prefixes anymore due to bootstrap 4 itself. 
+  - `flexfill` doesnt need prefixes anymore due to bootstrap 4 itself.
