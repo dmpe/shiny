@@ -886,7 +886,7 @@ buildTabItem <- function(index, tabsetId, foundSelected, tabs = NULL,
         aTag <- tags$a(class = "nav-link active",
                        href = paste("#", tabId, sep = ""),
                        `data-toggle` = "tab",
-                       getIcon(iconClass = divTag$attribs$`data-icon-class`)
+                       getIcon(iconClass = divTag$attribs$`data-icon-class`),
                        `data-value` = divTag$attribs$`data-value`,
                        divTag$attribs$title
 
@@ -896,7 +896,7 @@ buildTabItem <- function(index, tabsetId, foundSelected, tabs = NULL,
         aTag <- tags$a(class = "nav-link",
                        href = paste("#", tabId, sep = ""),
                        `data-toggle` = "tab",
-                       getIcon(iconClass = divTag$attribs$`data-icon-class`)
+                       getIcon(iconClass = divTag$attribs$`data-icon-class`),
                        `data-value` = divTag$attribs$`data-value`,
                        divTag$attribs$title
         )

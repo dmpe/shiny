@@ -70,11 +70,6 @@
 checkboxGroupInput <- function(inputId, label, choices = NULL, selected = NULL,
   inline = FALSE, width = NULL, choiceNames = NULL, choiceValues = NULL) {
 
-  # keep backward compatibility with Shiny < 1.0.1 (see #1649)
-  if (is.null(choices) && is.null(choiceNames) && is.null(choiceValues)) {
-    choices <- character(0)
-  }
-
   args <- normalizeChoicesArgs(choices, choiceNames, choiceValues)
 
   selected <- restoreInput(id = inputId, default = selected)
@@ -85,9 +80,11 @@ checkboxGroupInput <- function(inputId, label, choices = NULL, selected = NULL,
   options <- generateOptions(inputId, selected, inline,
     'checkbox', args$choiceNames, args$choiceValues)
 
-  divClass <- "form-group shiny-input-checkboxgroup shiny-input-container"
-  if (inline)
-    divClass <- paste(divClass, "shiny-input-container-inline")
+  divClass <- "shiny-input-checkboxgroup shiny-input-container"
+
+  if (inline) {
+    divClass <- paste(divClass, "form-check-inline")
+  }
 
   # return label and select tag
   tags$div(id = inputId,

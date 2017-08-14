@@ -96,8 +96,8 @@ radioButtons <- function(inputId, label, choices = NULL, selected = NULL,
   options <- generateOptions(inputId, selected, inline,
     'radio', args$choiceNames, args$choiceValues)
 
-  divClass <- "form-group shiny-input-radiogroup shiny-input-container"
-  if (inline) divClass <- paste(divClass, "shiny-input-container-inline")
+  divClass <- "shiny-input-radiogroup shiny-input-container"
+  if (inline) divClass <- paste(divClass, "form-check-inline")
 
   tags$div(id = inputId,
     style = if (!is.null(width)) paste0("width: ", validateCssUnit(width), ";"),

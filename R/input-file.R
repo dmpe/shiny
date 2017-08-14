@@ -102,14 +102,15 @@ fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
     label %AND% tags$label(label),
 
     tags$label(class = "custom-file",
-      tags$input(class = "form-file-input", id = "file", type = "file"),
+      tags$input(class = "custom-file-input", id = "file", type = "file"),
       tags$span(class = "custom-file-control", inputTag)
     ),
 
     tags$div(
       id=paste(inputId, "_progress", sep=""),
       class="progress shiny-file-input-progress",
-      tags$div(class="progress-bar progress-bar-striped progress-bar-animated", role="progressbar")
+      tags$div(class="progress-bar progress-bar-striped progress-bar-animated",
+               role="progressbar")
     )
   )
 }
