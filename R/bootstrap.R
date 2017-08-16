@@ -805,7 +805,7 @@ getIcon <- function(tab = NULL, iconClass = NULL) {
 # This function is called internally by navbarPage, tabsetPanel
 # and navlistPanel
 buildTabset <- function(tabs, ulClass, textFilter = NULL, id = NULL,
-                        selected = NULL, foundSelected = FALSE) {
+                        selected = NULL, foundSelected = FALSE, isDropdownMenu = F) {
 
   res <- findAndMarkSelectedTab(tabs, selected, foundSelected)
   tabs <- res$tabs
@@ -822,12 +822,23 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL, id = NULL,
   }
 
   tabsetId <- p_randomInt(1000, 10000)
-  tabs <- lapply(seq_len(length(tabs)), buildTabItem,
-            tabsetId = tabsetId, foundSelected = foundSelected,
-            tabs = tabs, textFilter = textFilter)
 
-  tabNavList <- tags$ul(class = ulClass, id = id,
+  if (isDropdownMenu == F) {
+    tabs <- lapply(seq_len(length(tabs)), buildTabItem,
+                   tabsetId = tabsetId, foundSelected = foundSelected,
+                   tabs = tabs, textFilter = textFilter, isDropdownMenuA = F)
+
+    cat("use tags$ul")
+    tabNavList <- tags$ul(class = ulClass, id = id,
                   `data-tabsetid` = tabsetId, lapply(tabs, "[[", 1))
+
+  } else {
+    tabs <- lapply(seq_len(length(tabs)), buildTabItem,
+                   tabsetId = tabsetId, foundSelected = foundSelected,
+                   tabs = tabs, textFilter = textFilter, isDropdownMenuA = T)
+    tabNavList <- tags$div(class = ulClass, id = id,
+                          `data-tabsetid` = tabsetId, lapply(tabs, "[[", 1))
+  }
 
   tabContent <- tags$div(class = "tab-content",
                   `data-tabsetid` = tabsetId, lapply(tabs, "[[", 2))
@@ -840,31 +851,33 @@ buildTabset <- function(tabs, ulClass, textFilter = NULL, id = NULL,
 # refactored for clarity and reusability). Called internally
 # by buildTabset.
 buildTabItem <- function(index, tabsetId, foundSelected, tabs = NULL,
-                         divTag = NULL, textFilter = NULL) {
+                         divTag = NULL, textFilter = NULL, isDropdownMenuA = F) {
 
   divTag <- if (!is.null(divTag)) divTag else tabs[[index]]
 
   if (is.character(divTag) && !is.null(textFilter)) {
     # text item: pass it to the textFilter if it exists
-    liTag <- textFilter(divTag) # <? shouldnt be navbarMenuTextFilter>
+    liTag <- textFilter(divTag)
     divTag <- NULL
 
   } else if (inherits(divTag, "shiny.navbarmenu")) {
     # navbarMenu item: build the child tabset
+
     tabset <- buildTabset(divTag$tabs, "dropdown-menu",
-      navbarMenuTextFilter, foundSelected = foundSelected)
+      navbarMenuTextFilter, foundSelected = foundSelected, isDropdownMenu = T)
+
     #https://v4-alpha.getbootstrap.com/components/navs/
 
     # if this navbarMenu contains a selected item, mark it active
     containsSelected <- containsSelectedTab(divTag$tabs)
-    liTag <- tags$li(
-      class = paste0("nav-item dropdown", if (containsSelected) " active"),
+    liTag <- tags$li(class = paste0("nav-item dropdown", if (containsSelected) " active"),
       tags$a(href = "#",
         class = "nav-link dropdown-toggle", `data-toggle` = "dropdown",
         `data-value` = divTag$menuName,
+        `aria-haspopup`= "true",
         `role` = "button",
-        divTag$title, tags$b(class = "caret"),
-        getIcon(iconClass = divTag$iconClass)
+        getIcon(iconClass = divTag$iconClass),
+        divTag$title, tags$b(class = "caret")
       ),
       tabset$navList   # inner tabPanels items
     )
@@ -879,7 +892,7 @@ buildTabItem <- function(index, tabsetId, foundSelected, tabs = NULL,
     aTagForDropDownMenu <- FALSE
     tabId <- 1
 
-    if (!aTagForDropDownMenu) {
+    if (isDropdownMenuA == T) {
       # if false
       if (tabId == 1) {
         # if it is the first one, then make it active by default
@@ -903,7 +916,11 @@ buildTabItem <- function(index, tabsetId, foundSelected, tabs = NULL,
       }
     }
 
-    liTag <- tags$li(aTag, class = "nav-item")
+    if(isDropdownMenuA == T) {
+      liTag <- tags$a(aTag, class = "dropdown-item")
+    } else {
+      liTag <- tags$li(aTag, class = "nav-item")
+    }
 
     # if this tabPanel is selected item, mark it active
     if (isTabSelected(divTag)) {
