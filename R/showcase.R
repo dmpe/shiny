@@ -118,7 +118,7 @@ navTabsHelperDropdown <- function(files, prefix = "") {
   lapply(files, function(file) {
     with(tags,
          a(class = if (tolower(file) %in% c("app.r", "server.r"))
-           "dropdown-item" else ""))
+           "dropdown-item" else "dropdown-item"))
   })
 }
 
