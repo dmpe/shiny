@@ -51,3 +51,12 @@ NEWS file for this fork
 - Notes:
   - Instead of using `flowLayout` by applying `shiny-flow-layout` CSS stylying, consider <https://getbootstrap.com/docs/4.0/layout/grid/#alignment>
   - `flexfill` doesnt need prefixes anymore due to bootstrap 4 itself.
+
+
+
+- Not working:
+  - File Upload
+    - Progress Bar
+  - https://github.com/dmpe/shiny/issues/10
+  - https://github.com/dmpe/shiny/issues/8
+

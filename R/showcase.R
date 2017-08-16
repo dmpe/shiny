@@ -80,7 +80,7 @@ appMetadata <- function(desc) {
 navTabsHelper <- function(files, prefix = "") {
   returnCode <- lapply(files, function(file) {
     with(tags,
-         li(class=if (tolower(file) %in% c("app.r", "server.r", "ui.r")) "nav-item" else "",
+         li(class=if (tolower(file) %in% c("app.r", "server.r")) "nav-item" else "nav-item",
             a(href=paste("#", gsub(".", "_", file, fixed=TRUE), "_code", sep=""),
               class = "nav-link active", "data-toggle"="tab", paste0(prefix, file)))
     )
@@ -117,10 +117,8 @@ navTabsDropdown <- function(files) {
 navTabsHelperDropdown <- function(files, prefix = "") {
   lapply(files, function(file) {
     with(tags,
-         li(class = if (tolower(file) %in% c("app.r", "server.r", "ui.r"))
-           "dropdown-item"
-           else
-             ""))
+         a(class = if (tolower(file) %in% c("app.r", "server.r"))
+           "dropdown-item" else ""))
   })
 }
 
@@ -159,7 +157,7 @@ showcaseCodeTabs <- function(codeLicense) {
        navTabsHelper(rFiles),
        navTabsDropdown(unlist(wwwFiles)),
        a(id="showcase-code-position-toggle",
-         class="btn btn-secondary ml-auto", # for alternative approach float-right
+         class="btn btn-secondary btn-sm ml-auto", # for alternative approach float-right
          onclick="toggleCodePosition()",
          icon("level-up"),
          "show with app")
@@ -192,7 +190,7 @@ showcaseAppInfo <- function() {
     desc <- read.dcf(con)
   }
   with(tags,
-    div(class="container-fluid shiny-code-container card card-body bg-light",
+    div(class="container-fluid card card-body bg-light shiny-code-container",
         id="showcase-card",
         div(class="row",
           if (hasDesc || hasReadme) {
@@ -201,7 +199,7 @@ showcaseAppInfo <- function() {
                 if (hasReadme) div(id="readme-md"))
           } else "",
           div(id="showcase-code-inline",
-              class=if (hasReadme || hasDesc) "col-md-8" else "col-md-10 offset-md-1",
+              class=if (hasReadme || hasDesc) "col-md-8" else "col-md-10 ml-auto",
               showcaseCodeTabs(
                 if (hasDesc && "License" %in% colnames(desc)) {
                   small(class="showcase-code-license text-muted",

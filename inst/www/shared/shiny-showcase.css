@@ -8,11 +8,7 @@
   background-color: white;
   margin-bottom: 0;
 }
-/*
-.shiny-code code {
-  font-family: Menlo, Consolas, "Courier New", monospace;
-}
-*/
+
 .shiny-code-container {
   margin-top: 20px;
   clear: both;
@@ -64,6 +60,10 @@
   border-bottom-left-radius: 4px;
 }
 
+#showcase-code-tabs .btn-sm {
+  height: 2rem;
+}
+
 #showcase-sxs-code {
   padding-top: 20px;
   vertical-align: top;
@@ -77,3 +77,5 @@
 #showcase-code-content pre {
   background-color: white;
 }
+
+
