@@ -14,7 +14,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
   var exports = window.Shiny = window.Shiny || {};
 
-  exports.version = "{{ VERSION }}"; // Version number inserted by Grunt
+  exports.version = "1.0.5.9000"; // Version number inserted by Grunt
 
   var origPushState = window.history.pushState;
   window.history.pushState = function () {
@@ -288,6 +288,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (!_equal(args[i], args[i + 1])) return false;
     }
     return true;
+  };
+
+  // Compare version strings like "1.0.1", "1.4-2". `op` must be a string like
+  // "==" or "<".
+  exports.compareVersion = function (a, op, b) {
+    function versionParts(ver) {
+      return (ver + "").replace(/-/, ".").replace(/(\.0)+[^\.]*$/, "").split(".");
+    }
+
+    function cmpVersion(a, b) {
+      a = versionParts(a);
+      b = versionParts(b);
+      var len = Math.min(a.length, b.length);
+      var cmp;
+
+      for (var i = 0; i < len; i++) {
+        cmp = parseInt(a[i], 10) - parseInt(b[i], 10);
+        if (cmp !== 0) {
+          return cmp;
+        }
+      }
+      return a.length - b.length;
+    }
+
+    var diff = cmpVersion(a, b);
+
+    if (op === "==") return diff === 0;else if (op === ">=") return diff >= 0;else if (op === ">") return diff > 0;else if (op === "<=") return diff <= 0;else if (op === "<") return diff < 0;else throw "Unknown operator: " + op;
   };
 
   // multimethod: Creates functions — "multimethods" — that are polymorphic on one
